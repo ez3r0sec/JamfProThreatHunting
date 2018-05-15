@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # requestFileInfo.sh
 # request information about a suspicious file on a system
-# Last Edited: 5/11/18 Julian Thies
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### PARAMETERS ###
 # parameter 4 is the first octet of your private address range (10, 172, 192)
@@ -12,6 +12,7 @@
 # parameter 8 is the password for the share (insecure, but the share can be given strict access controls)
 # parameter 9 is the full file path of the file that you wish to inspect
 # -----------------------------------------------------------------------------
+
 ### VARIABLES
 localNWRange="$4"
 localNetworkFile="/tmp/localYes.txt"
@@ -28,7 +29,7 @@ function section_header () {
 	echo "[ === $inputString ===]" >> "$destFile"
 }
 
-### check if on local network
+# check if on local network
 function check_nw {
 	rawIP="$(ifconfig | grep 'inet' | grep $localNWRange)"
 	# if IP address starts with same first octet of internal network
@@ -39,7 +40,7 @@ function check_nw {
 		exit
     	fi
 }
-### check for param 5 -- Share IP address/hostname
+# check for param 5 -- Share IP address/hostname
 function check_five {
 	if [ "$5" != "" ] ; then
     		IPaddr="$5"
@@ -48,7 +49,7 @@ function check_five {
     		exit
     	fi
 }
-### check for param 6 -- share name
+# check for param 6 -- share name
 function check_six {
 	if [ "$6" != "" ] ; then
    		shareName="$6"
@@ -57,7 +58,7 @@ function check_six {
     	  	exit
 	fi
 }
-### check for param 7 -- username
+# check for param 7 -- username
 function check_seven {
 	if [ "$7" != "" ] ; then
     		shareUser="$7"
@@ -66,7 +67,7 @@ function check_seven {
     	  	exit
 	fi
 }
-### check for param 8 -- password
+# check for param 8 -- password
 function check_eight {
 	if [ "$8" != "" ] ; then
     		sharePass="$8"
@@ -75,7 +76,7 @@ function check_eight {
     		exit
     	fi
 }
-### send report to smb/samba share
+# send report to smb/samba share
 function send_data {
 	diskutil unmount force "/Volumes/$shareName"    # unmount in case it is already mounted
 	shareString="smb://$shareUser:$sharePass@$IPaddr/$shareName"
@@ -85,14 +86,15 @@ function send_data {
 	diskutil unmount force "/Volumes/$shareName" 
 }
 
-### PREFLIGHT CHECKS
+### SCRIPT
+# PREFLIGHT CHECKS
 check_nw
 check_five
 check_six
 check_seven
 check_eight
 
-### GENERATE FILE
+# GENERATE FILE
 # file header
 echo "[ === $(date) -- $(hostname) -- FileInfo: $suspFile === ]" > "$destFile"
 space
@@ -125,6 +127,6 @@ section_header "STAT"
 stat "$suspFile" >> "$destFile"
 space
 
-### SEND DATA
+# SEND DATA
 send_data
 exit
