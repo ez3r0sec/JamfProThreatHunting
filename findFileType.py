@@ -2,14 +2,16 @@
 # -----------------------------------------------------------------------------
 # findFileType.py
 # find files matching the specified types
-# Last Edited: 4/1/18 Julian Thies
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
+
+### IMPORTS
 import os
 
-# ---------------- global variables
+### VARIABLES
 resultFile = "/tmp/results.txt"
 
-# ---------------- functions
+### FUNCTIONS
 def append_file(filename, contents):
      with open(filename, 'a') as f:
           f.write(contents + os.linesep)
@@ -50,7 +52,7 @@ def clean_up(directory, fileType):
           if directoryList[i].endswith(fileType):
                os.remove(directory + "/" + directoryList[i])
 
-# ---------------- script
+### SCRIPT
 ''' write a new function call for each file type '''
 
 search_file_type("sh", "/tmp", 1)
