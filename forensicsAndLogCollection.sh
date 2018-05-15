@@ -2,7 +2,9 @@
 # -----------------------------------------------------------------------------
 # forensicsAndLogCollection.sh
 # pull data remotely from a macOS client with suspicious indicators found in JAMF Pro
-# Last Edited: 4/26/18
+# this script is designed to load data onto a secured smb share on a local network
+#+to then view with another device.
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### parameters ###
 # parameter 4 set in the JSS is the first octet of your private address range (10, 172, 192)
@@ -11,7 +13,8 @@
 # parameter 7 set in the JSS is the username for the write user for the share
 # parameter 8 set in the JSS is the password for the share (insecure, but the share can be given strict access controls)
 # -----------------------------------------------------------------------------
-# variables
+
+### VARIABLES
 starDate="$(date +%y-%m-%d)"
 hostName="$(hostname)"
 localNWRange="$4"
@@ -25,9 +28,9 @@ downloadsFile="$dataDir/downloads.txt"
 persistenceFile="$dataDir/persistenceLocations.txt"
 processesFile="$dataDir/processes.txt"
 networkConnectionsFile="$dataDir/networkConnections.txt"
-# -----------------------------------------------------------------------------
-# functions
-### check if on local network
+
+### FUNCTIONS
+# check if on local network
 function check_nw {
 	rawIP="$(ifconfig | grep 'inet' | grep $localNWRange)"     # if IP address starts with 10, assume it is on local network
 	if [ "$rawIP" != "" ] ; then
@@ -36,7 +39,7 @@ function check_nw {
 		exit
     	fi
 }
-### check for param 5 -- Share IP address/hostname
+# check for param 5 -- Share IP address/hostname
 function check_five {
 	if [ "$5" != "" ] ; then
     		IPaddr="$5"
@@ -45,7 +48,7 @@ function check_five {
     		exit
     	fi
 }
-### check for param 6 -- share name
+# check for param 6 -- share name
 function check_six {
 	if [ "$6" != "" ] ; then
    		shareName="$6"
@@ -54,7 +57,7 @@ function check_six {
     	  	exit
 	fi
 }
-### check for param 7 -- username
+# check for param 7 -- username
 function check_seven {
 	if [ "$7" != "" ] ; then
     		shareUser="$7"
@@ -63,7 +66,7 @@ function check_seven {
     	  	exit
 	fi
 }
-### check for param 8 -- password
+# check for param 8 -- password
 function check_eight {
 	if [ "$8" != "" ] ; then
     		sharePass="$8"
@@ -72,7 +75,7 @@ function check_eight {
     		exit
     	fi
 }
-### make data directory
+# make data directory
 function make_dir {
     	if [ -e "$dataDir" ] ; then
 		rm -r "$dataDir"
@@ -81,7 +84,7 @@ function make_dir {
 		mkdir "$dataDir"
     	fi
 }
-### construct users file to use for collection and find all users
+# construct users file to use for collection and find all users
 function user_search {
 	destFile="$usersFile"
 	ls -1 /Users >> "$destFile"
@@ -90,7 +93,7 @@ function user_search {
 	echo "---- All Users ----" >> "$destFile"
 	dscl . list /Users UniqueID >> "$destFile"
 }
-### list contents of ~/Downloads
+# list contents of ~/Downloads
 function list_downloads {
 	cat "$usersFile" | while read line
 	do
@@ -98,11 +101,11 @@ function list_downloads {
 		sudo ls -l /Users/$line/Downloads >> "$downloadsFile"
     	done
 }
-### find all .apps
+# find all .apps
 function find_dotApps {
 	sudo find / -iname *.app >> "$dotAppFile"
 }
-### persistence mechanisms
+# persistence mechanisms
 function persist_mechs {
 	echo "---- /Users/*/Library/LaunchAgents ----" >> "$persistenceFile"
 	cat "$usersFile" | while read line
@@ -160,11 +163,11 @@ function persist_mechs {
 		crontab -l -u $line >> "$persistenceFile" 2>&1
 	done
 }
-### processes
+# processes
 function get_processes {
 	ps aux >> "$processesFile"
 }
-### send report to smb/samba share
+# send report to smb/samba share
 function send_data {
 	diskutil unmount force "/Volumes/$shareName"    # unmount in case it is already mounted
 	shareString="smb://$shareUser:$sharePass@$IPaddr/$shareName"
@@ -174,7 +177,7 @@ function send_data {
 	diskutil unmount force "/Volumes/$shareName" 
 }
 
-# -----------------------------------------------------------------------------
+### SCRIPT
 # preflight checks
 check_nw
 check_five
