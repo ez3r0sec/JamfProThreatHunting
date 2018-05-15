@@ -2,8 +2,9 @@
 # -----------------------------------------------------------------------------
 # detectLaunchAgentsDaemons.py
 # display launch agents and daemons
-# Last Edited: 5/3/2018 Julian Thies
+# Last Edited: 5/15/2018 Julian Thies
 # -----------------------------------------------------------------------------
+
 ### IMPORTS
 import os
 import glob
