@@ -2,21 +2,24 @@
 # -----------------------------------------------------------------------------
 # smallInstallers.py
 # Look for installer files smaller than a reasonable threshold for legitimate software
-# Last Edited: 2/21/18 Julian Thies
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
+
+### IMPORTS
 import os.path
-# ---------------- functions
-def check_file_contents(filename):           # check contents of a file ('cat')
+
+### FUNCTIONS
+def check_file_contents(filename):
      if os.path.exists(filename):
-          with open(filename, 'r') as contents:                   # open the file this way to ensure it is properly closed after use
+          with open(filename, 'r') as contents:
                fileContent = contents.read()
           print("<result>" + fileContent + "</result>")
      else:
           print("File does not exist")
 
-def write_file(fileName, contents):          # write to file
+def write_file(fileName, contents):
      with open(fileName, 'a') as f:
-          f.write(contents + os.linesep)     # write each new entry to a new line
+          f.write(contents + os.linesep)
 
 def search_file_type(fileType, searchPath, fileSizeThreshold):    # recursively search for files with .XXX extension
      fileTypeSizeKB = 0                                           # initialize a storage variable for size in KB
@@ -29,7 +32,7 @@ def search_file_type(fileType, searchPath, fileSizeThreshold):    # recursively 
                          posResult = os.path.join(root, file) + " == " + str(fileSizeKB) + " KB"
                          write_file("/tmp/smallInstallers.txt", posResult)
 
-# ---------------- script
+### SCRIPT
 search_file_type(".dmg", "/", 10000)     # look for dmgs smaller than 10 MB
 search_file_type(".pkg", "/", 5000)      # look for pkgs smaller than 5 MB
 
