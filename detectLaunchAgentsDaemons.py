@@ -2,17 +2,21 @@
 # -----------------------------------------------------------------------------
 # detectLaunchAgentsDaemons.py
 # display launch agents and daemons
-# Last Edited: 5/3/2018
+# Last Edited: 5/15/2018
 # -----------------------------------------------------------------------------
+
+### IMPORTS
 import os
 import glob
-# ---------------- global variables
+
+### VARIABLES
 daemonFile = "/tmp/daemons.txt"
 agentFile = "/tmp/agents.txt"
 resultFile = "/tmp/results.txt"
 
 userList = glob.glob('/Users/*')
-# ---------------- functions
+
+### FUNCTIONS
 def write_directory_contents(filename, directory):
      if os.path.exists(directory):
           directoryList = os.listdir(directory)          
@@ -42,7 +46,7 @@ def read_result_file(filename):
      else:
           print("<result>None</result>")
 
-# ---------------- script
+### SCRIPT
 ''' Launch Daemons '''
 write_directory_contents(daemonFile, "/Library/LaunchDaemons")
 multi_users_loop(daemonFile, userList, "/Library/LaunchDaemons")
