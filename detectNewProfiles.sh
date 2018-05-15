@@ -6,8 +6,9 @@
 #+for persistence <hxxps://
 #+blog.malwarebytes[.]com/threat-analysis/2018/04/new-crossrider-variant
 #+-installs-configuration-profiles-on-macs/>
-# Last Edited: 4/24/18 Julian Thies
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
+
 ### VARIABLES
 foundFile="/tmp/foundProfiles.txt"
 matchFile="/tmp/match.txt"
