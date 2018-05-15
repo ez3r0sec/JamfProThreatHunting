@@ -2,13 +2,17 @@
 # -----------------------------------------------------------------------------
 # detectSafariExtensions.py
 # look for safari extensions
-# Last Edited: 3/17/18
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
+
+### IMPORTS
 import os
 import hashlib
-# ---------------- variables
+
+### VARIABLES
 resultsFile = "/tmp/safariextz.txt"
-# ---------------- functions
+
+### FUNCTIONS
 ''' function to write results line by line '''
 def write_to_file(filepath, contents):
      with open(filepath, 'a') as f:
@@ -47,7 +51,7 @@ def read_result_file(filename):
      else:
           print("<result>None</result>")
 
-# ---------------- script
+### SCRIPT
 search_file_type("safariextz", "/")
 read_result_file(resultsFile)
 os.remove(resultsFile)
