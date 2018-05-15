@@ -2,8 +2,9 @@
 # -----------------------------------------------------------------------------
 # appsInUnusualLocations.sh
 # extension attribute to find .apps in unusual locations
-# Last Edited: 5/4/18
+# Last Edited: 5/15/18
 # -----------------------------------------------------------------------------
+
 ### VARIABLES
 found="/tmp/findApps.txt"
 errors="/tmp/hashErrors.txt"
