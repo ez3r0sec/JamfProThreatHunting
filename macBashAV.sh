@@ -5,6 +5,8 @@
 #+crude AV implementation, however, any positive results are 100% m41w4r3
 # Last Edited: 4/26/18 Julian Thies
 # ----------------------------------------------------------------------------
+
+### VARIABLES
 # set directories to scan here
 declare -a Scan_Dirs=(
 	"/Library"
@@ -21,9 +23,8 @@ hashStore="/tmp/sysHashes.txt"
 
 infectedFile="/tmp/infected.txt"
 
-###
+### FUNCTIONS
 ### [=== collect hashes from Objective-See ===] ###
-###
 function download_IOCs {
 	# grab the json file from Objective-See
 	curl -s -o /tmp/malware.json "$jsonURL"
@@ -53,9 +54,7 @@ function download_IOCs {
 	#echo "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" >> "$malHashes"
 }
 
-###
 ### [============ compare to files ============] ###
-###
 function compare_hashes () {
 	if [ -z "$1" ] ; then
 		echo "<result>A hash was not passed in to the compare_hashes function</result>"
@@ -106,7 +105,7 @@ function traverse_dirs () {
 	rm "$dirContents"
 }
 
-# ----------------------------------------------------------------------------
+### SCRIPT
 # extract hashes from Objective-See
 download_IOCs
 
