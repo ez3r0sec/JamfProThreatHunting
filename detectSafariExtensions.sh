@@ -2,11 +2,14 @@
 # -----------------------------------------------------------------------------
 # detectSafariExtensions.sh
 # look for safari extensions
-# Last Edited: 1/29/18
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
+
+### VARIABLEs
 fileType="safariextz"
 outputFile="/tmp/$fileType-file.txt"
 
+### SCRIPT
 searchDir="/"
 sudo find $searchDir -name "*.$fileType" >> "$outputFile"
 
