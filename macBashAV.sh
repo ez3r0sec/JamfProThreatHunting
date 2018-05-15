@@ -3,7 +3,7 @@
 # macBashAV.sh
 # collect malware hashes from Objective-See and compare to local files as a 
 #+crude AV implementation, however, any positive results are 100% m41w4r3
-# Last Edited: 4/26/18 Julian Thies
+# Last Edited: 5/15/18 Julian Thies
 # ----------------------------------------------------------------------------
 
 ### VARIABLES
