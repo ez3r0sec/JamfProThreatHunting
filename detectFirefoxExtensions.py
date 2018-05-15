@@ -4,11 +4,15 @@
 # look for safari extensions
 # Last Edited: 4/2/18
 # -----------------------------------------------------------------------------
+
+### IMPORTS
 import os
 import hashlib
-# ---------------- variables
+
+### VARIABLES
 resultsFile = "/tmp/xpi.txt"
-# ---------------- functions
+
+### FUNCTIONS
 ''' function to write results line by line '''
 def write_to_file(filepath, contents):
      with open(filepath, 'a') as f:
@@ -47,7 +51,7 @@ def read_result_file(filename):
      else:
           print("<result>None</result>")
 
-# ---------------- script
+### SCRIPT
 search_file_type("XPI", "/")
 read_result_file(resultsFile)
 os.remove(resultsFile)
