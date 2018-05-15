@@ -4,7 +4,7 @@
 # check installed apps against app whitelists
 # method is not the most effective due to only using file paths and names,
 #+ however it could be useful for finding malware
-# Last Edited: 4/16/18 Julian Thies
+# Last Edited: 5/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -405,7 +405,7 @@ function read_results {
 	echo "<result>$buildResult</result>"
 }
 
-
+### SCRIPT
 # find all of the .apps on the system
 sudo find / -name *.app >> "$foundFile"
 
