@@ -24,8 +24,8 @@ if [ "$checkSMB" != "" ] ; then
 fi
 
 # read results
-readResults="$(cat $runServ)"
 if [ -e "$runServ" ] ; then
+	readResults="$(cat $runServ)"
 	echo "<result>$readResults</result>"
 	rm "$runServ"
 else
