@@ -1,9 +1,9 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
-# detectObscurePersistenceMethods.sh
+# detectOldPersistenceMethods.sh
 # check for modified system files that could be used by malware for persistence
-# (deprecated methods)
-# Last Edited: 4/24/18
+# (deprecated methods, 10.9 and earlier)
+# Last Edited: 5/29/18
 # -----------------------------------------------------------------------------
 # rc.common
 md5RCCommon="28ce428faefe6168618867f3ff5527f9"
