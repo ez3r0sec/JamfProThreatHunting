@@ -44,3 +44,19 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
      
   6. Use the appWhitelistCheck.sh script to check for unknown .apps in your environment. This will take a considerable amount
      of tuning, however, once properly tuned, new malware that is in a .app bundle will be easy to find.
+     
+  7. The Parental Controls Configuration Profile payload has a feature to whitelist or blacklist URLs. If your managed fleet
+     is mostly mobile and users can work from home without using a VPN, this may be a good option to limit exposure to known-
+     bad domains or only allow access to domains that specific user roles need.
+     
+  8. Limit where users can install apps from. The JSS or Munki should be used to install all of the software users need as
+     these systems can be controlled by the systems administrator and/or security. Set the Restrictions payload of a 
+     Configuration Profile to only allow apps from the Mac App Store. For added security, only allow the app store for 
+     updates. 
+
+  9. Most macOS malware in the wild is still applications with a trojan horse that are installed unwittingly by users. Use 
+     the principle of least privilege to determine which users or groups of users need administrator rights to their machines
+     and carefully control this access. It is much more difficult for malware to gain root privileges if the user is unable 
+     to provide it to the malware. Many malware specimens such as OSX.Pirrit rely on the user entering their administrator 
+     password into a prompt. Alternatively, users could be given an administrator account on their Mac but are required to 
+     use a standard user account for browsing and their normal tasks.
