@@ -46,7 +46,7 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
      of tuning, however, once properly tuned, new malware that is in a .app bundle will be easy to find.
      
   7. The Parental Controls Configuration Profile payload has a feature to whitelist or blacklist URLs. If your managed fleet
-     is mostly mobile and users can work from home without using a VPN, this may be a good option to limit exposure to known-
+     is mostly mobile and users can work from home without using a VPN, this may be a good option to limit exposure to known
      bad domains or only allow access to domains that specific user roles need.
      
   8. Limit where users can install apps from. The JSS or Munki should be used to install all of the software users need as
