@@ -57,9 +57,9 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
   9. Most macOS malware in the wild still relies on installation via an application with a trojan horse. Use the principle of 
      least privilege to determine which users or groups of users need administrator rights to their machines and carefully 
      control this access. It is much more difficult for malware to gain root privileges if the user is unable to provide it 
-     to the malware. Many malware specimens such as OSX.Pirrit rely on the user entering their administrator password into a 
-     prompt. Alternatively, users could be given an administrator account on their Mac but are required to use a standard
-     user account for browsing and their normal tasks.
+     to the malware. Many malware specimens such as OSX.Pirrit (https://objective-see.com/blog/blog_0x0E.html) rely on the 
+     user entering their administrator password into a prompt. Alternatively, users could be given an administrator account 
+     on their Mac but are required to use a standard user account for browsing and their normal tasks.
      
  10. Enable the Application Layer Firewall (ALF) using a configuration profile. Installed applications will automatically be 
      allowed through. Note that the macOS ALF only blocks inbound connections. MacOS also has Packet Filter (PF) installed 
