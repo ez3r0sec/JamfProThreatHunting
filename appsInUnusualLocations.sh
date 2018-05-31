@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # appsInUnusualLocations.sh
 # extension attribute to find .apps in unusual locations
-# Last Edited: 5/15/18
+# Last Edited: 5/31/18
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -13,7 +13,6 @@ results="/tmp/results.txt"
 # array of dirs for search for apps
 declare -a Search_Dirs=(
 	"/tmp"
-	"/usr"
 	"/bin"
 	"/etc"
 	"/sbin"
