@@ -54,9 +54,9 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
      Configuration Profile to only allow apps from the Mac App Store. For added security, only allow the app store for 
      updates. 
 
-  9. Most macOS malware in the wild is still applications with a trojan horse that are installed unwittingly by users. Use 
-     the principle of least privilege to determine which users or groups of users need administrator rights to their machines
-     and carefully control this access. It is much more difficult for malware to gain root privileges if the user is unable 
-     to provide it to the malware. Many malware specimens such as OSX.Pirrit rely on the user entering their administrator 
-     password into a prompt. Alternatively, users could be given an administrator account on their Mac but are required to 
-     use a standard user account for browsing and their normal tasks.
+  9. Most macOS malware in the wild still relies on installation via an application with a trojan horse. Use the principle of 
+     least privilege to determine which users or groups of users need administrator rights to their machines and carefully 
+     control this access. It is much more difficult for malware to gain root privileges if the user is unable to provide it 
+     to the malware. Many malware specimens such as OSX.Pirrit rely on the user entering their administrator password into a 
+     prompt. Alternatively, users could be given an administrator account on their Mac but are required to use a standard
+     user account for browsing and their normal tasks.
