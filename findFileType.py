@@ -38,9 +38,9 @@ def search_file_type(fileType, searchPath):    # recursively search for files wi
      for root, dirs, files in os.walk(searchPath):                # recursively look through directories with searchPath as the root of the search
           for file in files:
                if file.endswith(fileType):                        # use the endswith function to find files with that ending
-            	     filePath = os.path.join(root, file)           # records the full file path
+                    filePath = os.path.join(root, file)           # records the full file path
                     fileSizeKB = os.path.getsize(filePath) / 1000000.0 # make sure we are doing floating point calcs
-            	     append_file(outfile, os.path.join(root, file) + "   ==   " + str(fileSizeKB) + " KB")
+                    append_file(outfile, os.path.join(root, file) + "   ==   " + str(fileSizeKB) + " KB")
      check_results(outfile)
 
 def clean_up(directory, fileType):
