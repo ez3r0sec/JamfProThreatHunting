@@ -1,6 +1,6 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
-# bashHistoryHunting.sh
+# detectSuspiciousBash.sh
 # look for evidence of obfuscation or suspicious commands in bash_history
 # Last Edited: 6/1/18 Julian Thies
 # -----------------------------------------------------------------------------
@@ -12,6 +12,7 @@ histFile="bash_history.log"
 detectFile="/tmp/possible-intrusion.log"
 
 ### ARRAYS
+# add or remove queries to your heart's content ## uname adds a lot of false positives
 declare -a Susp_CLs=(
 	"curl"
 	"ssh"
