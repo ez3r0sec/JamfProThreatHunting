@@ -65,7 +65,6 @@ function match_list () {
 		echo "<result>Not enough parameters</result>"
 		exit 1
 	else
-		echo "Grepping for $1 from $collectDir/$2"
 		grep "$1" "$collectDir/$2" >> "$detectFile"
 	fi
 }
@@ -79,7 +78,7 @@ function check_history {
 		do
 			for (( i=0; i<${#Susp_CLs[@]}; i++ )) ; 
 			do
-				echo "Calling match_list"
+				echo "$line =====" >> "$detectFile"
 				match_list "${Susp_CLs[$i]}" "$line"
 			done
 		done
@@ -88,7 +87,8 @@ function check_history {
 }
 
 function read_result {
-	if [ -e "$detectFile" ] ; then
+	isEmpty="$(grep -v "=====" "$detectFile")"
+	if [ "$isEmpty" != "" ] ; then
 		result="$(cat "$detectFile")"
 		echo "<result>$result</result>"
 	else
