@@ -76,9 +76,9 @@ function check_history {
 		# loop through each file and check for suspicious command lines
 		cat /tmp/run.txt | while read line
 		do
+			echo "$line =====" >> "$detectFile"
 			for (( i=0; i<${#Susp_CLs[@]}; i++ )) ; 
 			do
-				echo "$line =====" >> "$detectFile"
 				match_list "${Susp_CLs[$i]}" "$line"
 			done
 		done
