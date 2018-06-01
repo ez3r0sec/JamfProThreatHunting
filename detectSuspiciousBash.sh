@@ -78,6 +78,9 @@ function check_history {
 	cat /tmp/run.txt | while read line
 	do
 		echo "$line =====" >> "$detectFile"
+		# first grep for IPs
+		grep -w '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' "$collectDir/$line" >> "$detectFile"
+		# iterate through the array
 		for (( i=0; i<${#Susp_CLs[@]}; i++ )) ; 
 		do
 			match_list "${Susp_CLs[$i]}" "$line"
