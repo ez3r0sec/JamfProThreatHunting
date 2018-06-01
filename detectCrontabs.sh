@@ -1,6 +1,6 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
-# crontabs.sh
+# detectCrontabs.sh
 # interrogate the cron jobs on a macOS system
 # Last Edited: 6/1/18 Julian Thies
 # -----------------------------------------------------------------------------
