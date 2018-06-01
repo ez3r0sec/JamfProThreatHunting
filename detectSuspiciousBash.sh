@@ -58,6 +58,7 @@ function collect_bash_history {
 			sudo cat "$line" >> "$collectDir/$afterCut-$histFile"
 		fi
 	done
+	rm /tmp/historyFiles.txt
 }
 
 function match_list () {
@@ -71,22 +72,22 @@ function match_list () {
 
 
 function check_history {
-		# find which files we need to loop through
-		ls -1 "$collectDir" >> /tmp/run.txt
-		# loop through each file and check for suspicious command lines
-		cat /tmp/run.txt | while read line
+	# find which files we need to loop through
+	ls -1 "$collectDir" >> /tmp/run.txt
+	# loop through each file and check for suspicious command lines
+	cat /tmp/run.txt | while read line
+	do
+		echo "$line =====" >> "$detectFile"
+		for (( i=0; i<${#Susp_CLs[@]}; i++ )) ; 
 		do
-			echo "$line =====" >> "$detectFile"
-			for (( i=0; i<${#Susp_CLs[@]}; i++ )) ; 
-			do
-				match_list "${Susp_CLs[$i]}" "$line"
-			done
+			match_list "${Susp_CLs[$i]}" "$line"
 		done
-		
-
+	done
+	rm /tmp/run.txt		
 }
 
 function read_result {
+	# remove all lines containing "=====" to see if there are any matches
 	isEmpty="$(grep -v "=====" "$detectFile")"
 	if [ "$isEmpty" != "" ] ; then
 		result="$(cat "$detectFile")"
@@ -97,12 +98,6 @@ function read_result {
 }
 
 function clean_up {
-	if [ -e "/tmp/historyFiles.txt" ] ; then
-		rm "/tmp/historyFiles.txt"
-	fi
-	if [ -e "/tmp/run.txt" ] ; then
-		rm "/tmp/run.txt"
-	fi
 	if [ -e "$detectFile" ] ; then
 		rm "$detectFile"
 	fi
