@@ -4,7 +4,7 @@
 # pull data remotely from a macOS client with suspicious indicators found in JAMF Pro
 # this script is designed to load data onto a secured smb share on a local network
 #+to then view with another device.
-# Last Edited: 5/15/18 Julian Thies
+# Last Edited: 6/1/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### parameters ###
 # parameter 4 set in the JSS is the first octet of your private address range (10, 172, 192)
@@ -154,18 +154,36 @@ function persist_mechs {
 		echo "Google Chrome is not installed" >> "$persistenceFile"
 	fi
 	#
-	echo "---- root crontab ----" >> "$persistenceFile"
-	sudo crontab -l >> "$persistenceFile" 2>&1
-	echo "---- user crontabs ----" >> "$persistenceFile"
-	cat "$usersFile" | while read line
+	# find all bash_history files on the system
+	sudo find / -name '.bash_history' >> /tmp/historyFiles.txt
+	# try to figure out the users
+	cat /tmp/historyFiles.txt | while read line
 	do
-		echo "$line ----" >> "$persistenceFile"
-		crontab -l -u $line >> "$persistenceFile" 2>&1
+		length="${#line}"
+		cutString="$((($length - 15)))"
+		userName="${line:1:$cutString}"
+		# sort into files based on username
+		if [ "$userName" == "root" ] ; then
+			echo "$userName =====" >> "$persistenceFile"
+			sudo cat "$line" >> "$persistenceFile"
+		else
+			# flush out additional users' bash_history
+			afterHome=${userName#*Users}
+			lengthAfterHome="(( ${#afterHome} - 1 ))"
+			afterCut="${afterHome:1:$lengthAfterHome}"
+			echo "$afterCut =====" >> "$persistenceFile"
+			sudo cat "$line" >> "$persistenceFile"
+		fi
 	done
+	rm /tmp/historyFiles.txt
 }
 # processes
 function get_processes {
 	ps aux >> "$processesFile"
+}
+# network stats
+function network_stats {
+	netstat -nal >> "$networkConnectionsFile"
 }
 # send report to smb/samba share
 function send_data {
@@ -191,6 +209,7 @@ list_downloads
 find_dotApps
 persist_mechs
 get_processes
+network_stats
 
 send_data
 exit
