@@ -7,10 +7,12 @@ personnel can find malware installed on managed devices.
 If the suspicious indicator is not found, the scripts are written to return 'None' to the JSS. Setting an "all clear" result 
 as none across scripts allows for flexible grouping of criteria to generate smart groups. Smart groups could be
 constructed for each script individually or scripts can be grouped into smart groups for high-medium-low indicator ratings
-based on the perceived amount of risk. For example, if the sudoers file has been edited with 'defaults !tty_tickets' or there 
-are root crontabs that run unknown files, that machine has likely been owned and is a risk that should be dealt with 
+based on the perceived amount of risk. For example, if the sudoers file has been edited with 'defaults !tty_tickets' or 
+there are root crontabs that run unknown files, that machine has likely been owned and is a risk that should be dealt with 
 immediately. If there are just a few strange .exe files on a machine, it may be of less concern and could be placed in a 
-medium or lower risk-level smart group. In either case, each device in the smart group can then be investigated further 
+medium or lower risk-level smart group. 
+
+In either case, each device in the smart group can then be investigated further 
 within the JSS or with other custom scripts such as Yelp's osxcollector (https://github.com/Yelp/osxcollector), 
 requestFileInfo.sh, and forensicsAndLogCollection.sh scripts in the repository. Note that the two aforementioned scripts in
 the repository require the target device to be on the LAN and there must be an SMB/Samba server with a share designed to
