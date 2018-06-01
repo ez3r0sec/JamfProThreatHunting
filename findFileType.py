@@ -39,7 +39,7 @@ def search_file_type(fileType, searchPath):    # recursively search for files wi
           for file in files:
                if file.endswith(fileType):                        # use the endswith function to find files with that ending
                     filePath = os.path.join(root, file)           # records the full file path
-                    fileSizeKB = os.path.getsize(filePath) / 1000000.0 # make sure we are doing floating point calcs
+                    fileSizeKB = os.path.getsize(filePath) / 1000.0 # make sure we are doing floating point calcs
                     append_file(outfile, os.path.join(root, file) + "   ==   " + str(fileSizeKB) + " KB")
      check_results(outfile)
 
