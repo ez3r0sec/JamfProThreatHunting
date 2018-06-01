@@ -27,7 +27,7 @@ def search_file_type(fileType, searchPath, fileSizeThreshold):    # recursively 
           for file in files:
                if file.endswith(fileType):                        # use the endswith function to find files with that ending
                     filePath = os.path.join(root, file)           # records the full file path
-                    fileSizeKB = os.path.getsize(filePath) / 1000 # convert to KB
+                    fileSizeKB = os.path.getsize(filePath) / 1000.0 # convert to KB
                     if fileSizeKB < fileSizeThreshold:            # flag files less than the specified size threshold
                          posResult = os.path.join(root, file) + " == " + str(fileSizeKB) + " KB"
                          write_file("/tmp/smallInstallers.txt", posResult)
