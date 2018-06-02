@@ -22,6 +22,7 @@ declare -a Susp_CLs=(
 	"ifconfig"
 	"visudo"
 	"nano"
+	"cron"
 	"zip"
 	"?"
 	"*"
