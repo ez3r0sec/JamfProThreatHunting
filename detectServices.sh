@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectServices.sh
 # check for services like Apache and SMB running on the machine
-# Last Edited: 5/29/18
+# Last Edited: 6/2/18 Julian Thies
 # -----------------------------------------------------------------------------
 runServ="/tmp/runningservices.txt"
 
@@ -20,7 +20,7 @@ if [ "$checkAFP" != "" ] ; then
 fi
 # check for SMB
 if [ "$checkSMB" != "" ] ; then
-	echo "SMB is running" >> "$runServ"
+	echo "Samba is running" >> "$runServ"
 fi
 
 # read results
