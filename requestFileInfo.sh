@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # requestFileInfo.sh
 # request information about a suspicious file on a system
-# Last Edited: 5/15/18 Julian Thies
+# Last Edited: 6/7/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### PARAMETERS ###
 # parameter 4 is the first octet of your private address range (10, 172, 192)
@@ -101,9 +101,9 @@ space
 
 # file ops
 section_header "HASH"
-echo "sha256:  $(shasum -a 256 $hashFile | awk '{print $1}')" >> "$destFile"
-echo "md5   :  $(md5 $hashFile | awk '{print $4}')" >> "$destFile"
-echo "sha1  :  $(shasum $hashFile | awk '{print $1}')" >> "$destFile"
+echo "sha256:  $(shasum -a 256 $suspFile | awk '{print $1}')" >> "$destFile"
+echo "md5   :  $(md5 $suspFile | awk '{print $4}')" >> "$destFile"
+echo "sha1  :  $(shasum $suspFile | awk '{print $1}')" >> "$destFile"
 space
 
 section_header "FILE"
