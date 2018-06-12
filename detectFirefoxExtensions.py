@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectFirefoxExtensions.py
 # look for safari extensions
-# Last Edited: 4/2/18
+# Last Edited: 6/12/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -33,11 +33,9 @@ def hash_file(filename):
 
 ''' search for files matching the specified file type'''
 def search_file_type(fileType, searchPath):
-     fileTypeCounter = 0
      for root, dirs, files in os.walk(searchPath):
           for file in files:
                if file.endswith(fileType):
-                    fileTypeCounter = fileTypeCounter + 1
                     filePath = os.path.join(root, file)
                     fileHash = hash_file(filePath)
                     write_to_file(resultsFile, filePath + " -- SHA256: " + fileHash)
