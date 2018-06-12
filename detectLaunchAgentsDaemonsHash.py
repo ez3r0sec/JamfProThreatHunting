@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectLaunchAgentsDaemons.py
 # display launch agents and daemons
-# Last Edited: 5/15/2018 Julian Thies
+# Last Edited: 6/12/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -49,15 +49,15 @@ def check_results(filename):
 		with open(filename, 'r') as f:
 	    	contents = f.read()
 	        with open(resultFile, 'a') as f:
-				f.write(contents)
+			f.write(contents)
 	os.remove(filename)
 
 def read_result_file(filename):
 	if os.path.exists(filename):
-	    with open(filename, 'r') as f:
-	        fileContent = f.read()
-	    print("<result>" + fileContent + "</result>")
-		os.remove(filename)
+		with open(filename, 'r') as f:
+	        	fileContent = f.read()
+		print("<result>" + fileContent + "</result>")
+			os.remove(filename)
 	else:
 		print("<result>None</result>")
 
