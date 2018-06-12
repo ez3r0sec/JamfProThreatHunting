@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectCrontabs.sh
 # interrogate the cron jobs on a macOS system
-# Last Edited: 6/1/18 Julian Thies
+# Last Edited: 6/12/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -32,7 +32,7 @@ if [ "$lengthTabs" -gt 0 ] ; then
 	if [ -e "$tabs" ] ; then
 		rm "$tabs"
 	fi
-	if [ -e "$tabs" ] ; then
+	if [ -e "$artifacts" ] ; then
 		rm "$artifacts"
 	fi
 else
