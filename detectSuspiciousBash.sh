@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectSuspiciousBash.sh
 # look for evidence of obfuscation or suspicious commands in bash_history
-# Last Edited: 6/1/18 Julian Thies
+# Last Edited: 6/10/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -12,7 +12,8 @@ histFile="bash_history.log"
 detectFile="/tmp/possible-intrusion.log"
 
 ### ARRAYS
-# add or remove queries to your heart's content ## uname adds a lot of false positives
+# add or remove queries to your heart's content ## uname adds a lot of false
+#+positives. Currently only uses very basic regex
 declare -a Susp_CLs=(
 	"curl"
 	"ssh"
