@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectCrontabs.sh
 # interrogate the cron jobs on a macOS system
-# Last Edited: 6/12/18 Julian Thies
+# Last Edited: 6/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
