@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectSuspiciousBash.sh
 # look for evidence of obfuscation or suspicious commands in bash_history
-# Last Edited: 6/10/18 Julian Thies
+# Last Edited: 6/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -42,7 +42,7 @@ function mk_dir {
 
 function collect_bash_history {
 	# find all bash_history files on the system
-	sudo find / -name '.bash_history' >> /tmp/historyFiles.txt
+	find / -name '.bash_history' >> /tmp/historyFiles.txt
 	# try to figure out the users
 	cat /tmp/historyFiles.txt | while read line
 	do
@@ -51,13 +51,13 @@ function collect_bash_history {
 		userName="${line:1:$cutString}"
 		# sort into files based on username
 		if [ "$userName" == "root" ] ; then
-			sudo cat "$line" >> "$rootHistFile"
+			cat "$line" >> "$rootHistFile"
 		else
 			# flush out additional users' bash_history
 			afterHome=${userName#*Users}
 			lengthAfterHome="(( ${#afterHome} - 1 ))"
 			afterCut="${afterHome:1:$lengthAfterHome}"
-			sudo cat "$line" >> "$collectDir/$afterCut-$histFile"
+			cat "$line" >> "$collectDir/$afterCut-$histFile"
 		fi
 	done
 	rm /tmp/historyFiles.txt
