@@ -20,7 +20,7 @@ if [ "$lengthTabs" -gt 0 ] ; then
 	cat "$tabs" | while read line
 	do
 		echo "$line ==========" >> "$artifacts"
-		sudo cat "/usr/lib/cron/tabs/$line" >> "$artifacts"
+		cat "/usr/lib/cron/tabs/$line" >> "$artifacts"
 	done
 	
 	result="$(cat $artifacts)"
@@ -42,4 +42,3 @@ else
 		rm "$tabs"
 	fi
 fi
-
