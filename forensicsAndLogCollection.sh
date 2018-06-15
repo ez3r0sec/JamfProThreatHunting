@@ -4,7 +4,7 @@
 # pull data remotely from a macOS client with suspicious indicators found in JAMF Pro
 # this script is designed to load data onto a secured smb share on a local network
 #+to then view with another device.
-# Last Edited: 6/1/18 Julian Thies
+# Last Edited: 6/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### parameters ###
 # parameter 4 set in the JSS is the first octet of your private address range (10, 172, 192)
@@ -98,12 +98,12 @@ function list_downloads {
 	cat "$usersFile" | while read line
 	do
         	echo "Downloads for $line"
-		sudo ls -l /Users/$line/Downloads >> "$downloadsFile"
+		ls -l /Users/$line/Downloads >> "$downloadsFile"
     	done
 }
 # find all .apps
 function find_dotApps {
-	sudo find / -iname *.app >> "$dotAppFile"
+	find / -iname *.app >> "$dotAppFile"
 }
 # persistence mechanisms
 function persist_mechs {
@@ -125,20 +125,20 @@ function persist_mechs {
 		echo "" >> "$persistenceFile"
 		echo "---- $line ----" >> "$persistenceFile"
 		echo >> "$persistenceFile"
-		sudo cat "/Users/$line/Library/Preferences/com.apple.loginitems.plist" >> "$persistenceFile" 2>&1
+		cat "/Users/$line/Library/Preferences/com.apple.loginitems.plist" >> "$persistenceFile" 2>&1
 	done
 	# Browser Extensions
 	echo "---- Safari Extensions ----" >> "$persistenceFile"
 	cat "$usersFile" | while read line
 	do
-		sudo ls -l /Users/$line/Library/Safari/Extensions/ >> "$persistenceFile" 2>&1
+		ls -l /Users/$line/Library/Safari/Extensions/ >> "$persistenceFile" 2>&1
 	done
 	# Firefox
 	if [ -e "/Applications/Firefox.app" ] ; then
 		echo "---- Firefox Extensions ----" >> "$persistenceFile"
 		cat "$usersFile" | while read line
 		do
-			sudo ls -lR "/Users/$line/Library/Application Support/Firefox/Profiles" >> "$persistenceFile" 2>&1
+			ls -lR "/Users/$line/Library/Application Support/Firefox/Profiles" >> "$persistenceFile" 2>&1
 		done
 	else
 		echo "Firefox is not installed" >> "$persistenceFile"
@@ -148,14 +148,14 @@ function persist_mechs {
 		echo "---- Google Chrome Extensions ----" >> "$persistenceFile"
 		cat "$usersFile" | while read line
 		do
-			sudo ls -l "/Users/$line/Library/Application Support/Google/Chrome/Default/Extensions" >> "$persistenceFile" 2>&1
+			ls -l "/Users/$line/Library/Application Support/Google/Chrome/Default/Extensions" >> "$persistenceFile" 2>&1
 		done
 	else
 		echo "Google Chrome is not installed" >> "$persistenceFile"
 	fi
 	#
 	# find all bash_history files on the system
-	sudo find / -name '.bash_history' >> /tmp/historyFiles.txt
+	find / -name '.bash_history' >> /tmp/historyFiles.txt
 	# try to figure out the users
 	cat /tmp/historyFiles.txt | while read line
 	do
@@ -165,14 +165,14 @@ function persist_mechs {
 		# sort into files based on username
 		if [ "$userName" == "root" ] ; then
 			echo "$userName =====" >> "$persistenceFile"
-			sudo cat "$line" >> "$persistenceFile"
+			cat "$line" >> "$persistenceFile"
 		else
 			# flush out additional users' bash_history
 			afterHome=${userName#*Users}
 			lengthAfterHome="(( ${#afterHome} - 1 ))"
 			afterCut="${afterHome:1:$lengthAfterHome}"
 			echo "$afterCut =====" >> "$persistenceFile"
-			sudo cat "$line" >> "$persistenceFile"
+			cat "$line" >> "$persistenceFile"
 		fi
 	done
 	rm /tmp/historyFiles.txt
@@ -190,7 +190,7 @@ function send_data {
 	diskutil unmount force "/Volumes/$shareName"    # unmount in case it is already mounted
 	shareString="smb://$shareUser:$sharePass@$IPaddr/$shareName"
 	open "$shareString"
-	sudo rysnc -var "$dataDir/" "/Volumes/$shareName"
+	rysnc -var "$dataDir/" "/Volumes/$shareName"
 	sleep 120
 	diskutil unmount force "/Volumes/$shareName" 
 }
