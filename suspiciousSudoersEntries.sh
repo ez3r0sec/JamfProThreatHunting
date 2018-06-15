@@ -10,10 +10,10 @@ sudoersFile="/etc/sudoers"
 exampleString="# %wheel ALL=(ALL) NOPASSWD: ALL"
 
 # check if no password is required to run commands in the sudo context
-noPass="$(sudo grep 'ALL=(ALL) NOPASSWD: ALL' $sudoersFile | grep -v "$exampleString")"
+noPass="$(grep 'ALL=(ALL) NOPASSWD: ALL' $sudoersFile | grep -v "$exampleString")"
 
 # check if there is no expiration for sudo authorization
-noTimeLimit="$(sudo grep 'defaults !tty_tickets' $sudoersFile)"
+noTimeLimit="$(grep 'defaults !tty_tickets' $sudoersFile)"
 
 if [ "$noPass" == "" ] && [ "$noTimeLimit" == "" ] ; then
 	echo "<result>None</result>"
