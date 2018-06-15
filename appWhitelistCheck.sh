@@ -4,7 +4,7 @@
 # check installed apps against app whitelists
 # method is not the most effective due to only using file paths and names,
 #+ however it could be useful for finding malware
-# Last Edited: 5/15/18 Julian Thies
+# Last Edited: 6/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -13,7 +13,6 @@ matchFile="/tmp/match.txt"
 resultsFile="/tmp/results.txt"
 
 ######### BEGIN WHITELISTS #########
-
 # whitelist of corp-installed apps: modify with apps installed by your org
 declare -a Corp_App_Whitelist=(
 	"/Applications/Google Chrome.app"
@@ -395,7 +394,7 @@ function check_white_lists {
 			# if there is no match, hash it and present it
 			hashPath="$(ls -1 "$line/Contents/MacOS")"
 			sha256="$(shasum -a 256 "$line/Contents/MacOS/$hashPath" | awk '$1 {print $1}')"
-			echo "$line  -- SHA256:  $sha256" >> "$resultsFile"
+			echo "$line -- SHA256:  $sha256" >> "$resultsFile"
 		fi
 	done
 }
@@ -407,7 +406,7 @@ function read_results {
 
 ### SCRIPT
 # find all of the .apps on the system
-sudo find / -name *.app >> "$foundFile"
+find / -name *.app >> "$foundFile"
 
 # check the found apps against the white lists
 check_white_lists
