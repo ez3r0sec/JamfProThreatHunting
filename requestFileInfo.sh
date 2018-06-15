@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # requestFileInfo.sh
 # request information about a suspicious file on a system
-# Last Edited: 6/7/18 Julian Thies
+# Last Edited: 6/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### PARAMETERS ###
 # parameter 4 is the first octet of your private address range (10, 172, 192)
@@ -81,7 +81,7 @@ function send_data {
 	diskutil unmount force "/Volumes/$shareName"    # unmount in case it is already mounted
 	shareString="smb://$shareUser:$sharePass@$IPaddr/$shareName"
 	open "$shareString"
-	sudo rysnc -var "$dataDir/" "/Volumes/$shareName"
+	rysnc -var "$dataDir/" "/Volumes/$shareName"
 	sleep 120
 	diskutil unmount force "/Volumes/$shareName" 
 }
