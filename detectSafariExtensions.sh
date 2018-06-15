@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectSafariExtensions.sh
 # look for safari extensions
-# Last Edited: 5/15/18 Julian Thies
+# Last Edited: 6/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLEs
@@ -11,7 +11,7 @@ outputFile="/tmp/$fileType-file.txt"
 
 ### SCRIPT
 searchDir="/"
-sudo find $searchDir -name "*.$fileType" >> "$outputFile"
+find $searchDir -name "*.$fileType" >> "$outputFile"
 
 num_fileType="$(wc -l < "$outputFile")"
 
