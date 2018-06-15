@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # appsInUnusualLocations.sh
 # extension attribute to find .apps in unusual locations
-# Last Edited: 5/31/18
+# Last Edited: 6/15/18
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -28,7 +28,7 @@ function find_apps () {
 	else
 		searchDir="$1"
 		# find .apps in the passed in directory
-		sudo find "$searchDir" -name "*.app" >> "$found"
+		find "$searchDir" -name "*.app" >> "$found"
 	fi
 }
 
@@ -61,7 +61,6 @@ function read_results {
 	fi
 }
 
-
 ### SCRIPT
 # scan against array above
 for (( i=0; i<${#Search_Dirs[@]}; i++ )) ; 
@@ -70,7 +69,7 @@ do
 done
 
 # MiniTerm is signed by Apple
-sudo find /usr -name "*.app" | grep -v '/usr/libexec/MiniTerm.app' >> "$found"
+find /usr -name "*.app" | grep -v '/usr/libexec/MiniTerm.app' >> "$found"
 
 # hash it up
 hash_line
