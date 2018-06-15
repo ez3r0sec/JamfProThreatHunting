@@ -6,7 +6,7 @@
 #+for persistence <hxxps://
 #+blog.malwarebytes[.]com/threat-analysis/2018/04/new-crossrider-variant
 #+-installs-configuration-profiles-on-macs/>
-# Last Edited: 6/11/18 Julian Thies
+# Last Edited: 6/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -57,7 +57,7 @@ function read_results {
 
 ### SCRIPT
 # collect profile identifiers
-sudo profiles -L | awk '{print $4}' | grep -v 'system' >> "$foundFile"
+profiles -L | awk '{print $4}' | grep -v 'system' >> "$foundFile"
 
 # check against whitelist
 iterate_whitelist
