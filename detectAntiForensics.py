@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# antiForensics.py
+# detectAntiForensics.py
 # attempt to detect anti-forensic/detection techniques on macOS
 # Last Edited: 6/25/17 Julian Thies
 
