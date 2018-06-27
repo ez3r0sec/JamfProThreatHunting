@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectProxy.sh
 # check for configured proxies
-# Last Edited: 6/12/18 Julian Thies
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 md5DefaultSettings="ecfac3dd55e6cf2c05c1d11865eee893"
 
@@ -21,3 +21,4 @@ else
 fi
 
 rm /tmp/proxysettings.txt
+# -----------------------------------------------------------------------------
