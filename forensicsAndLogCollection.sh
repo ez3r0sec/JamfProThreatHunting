@@ -1,10 +1,11 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
 # forensicsAndLogCollection.sh
+# Run as a policy
 # pull data remotely from a macOS client with suspicious indicators found in JAMF Pro
 # this script is designed to load data onto a secured smb share on a local network
 #+to then view with another device.
-# Last Edited: 6/15/18 Julian Thies
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### parameters ###
 # parameter 4 set in the JSS is the first octet of your private address range (10, 172, 192)
