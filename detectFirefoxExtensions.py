@@ -53,3 +53,4 @@ def read_result_file(filename):
 search_file_type("XPI", "/")
 read_result_file(resultsFile)
 os.remove(resultsFile)
+# -----------------------------------------------------------------------------
