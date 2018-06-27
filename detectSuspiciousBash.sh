@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectSuspiciousBash.sh
 # look for evidence of obfuscation or suspicious commands in bash_history
-# Last Edited: 6/15/18 Julian Thies
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -117,3 +117,4 @@ collect_bash_history
 check_history
 read_result
 clean_up
+# -----------------------------------------------------------------------------
