@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectSafariExtensions.py
 # look for safari extensions
-# Last Edited: 5/15/18 Julian Thies
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -55,3 +55,4 @@ def read_result_file(filename):
 search_file_type("safariextz", "/")
 read_result_file(resultsFile)
 os.remove(resultsFile)
+# -----------------------------------------------------------------------------
