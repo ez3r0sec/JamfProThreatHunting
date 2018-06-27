@@ -1,8 +1,9 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
 # requestFileInfo.sh
+# run as a policy
 # request information about a suspicious file on a system
-# Last Edited: 6/15/18 Julian Thies
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 ### PARAMETERS ###
 # parameter 4 is the first octet of your private address range (10, 172, 192)
@@ -130,3 +131,4 @@ space
 # SEND DATA
 send_data
 exit
+# -----------------------------------------------------------------------------
