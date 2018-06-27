@@ -2,8 +2,10 @@
 # -----------------------------------------------------------------------------
 # suspiciousSudoersEntries.sh
 # look for suspicious entries in the sudoers file
-# Last Edited: 4/2/18
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
+
+### VARIABLES
 sudoersFile="/etc/sudoers"
 
 # example string in the configuration file that would match our criteria
@@ -15,6 +17,7 @@ noPass="$(grep 'ALL=(ALL) NOPASSWD: ALL' $sudoersFile | grep -v "$exampleString"
 # check if there is no expiration for sudo authorization
 noTimeLimit="$(grep 'defaults !tty_tickets' $sudoersFile)"
 
+### SCRIPT
 if [ "$noPass" == "" ] && [ "$noTimeLimit" == "" ] ; then
 	echo "<result>None</result>"
 else
@@ -29,3 +32,4 @@ fi
 if [ -e /tmp/result.txt ] ; then
 	rm /tmp/result.txt
 fi
+# -----------------------------------------------------------------------------
