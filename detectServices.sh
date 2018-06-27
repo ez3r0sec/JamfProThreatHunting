@@ -2,14 +2,17 @@
 # -----------------------------------------------------------------------------
 # detectServices.sh
 # check for services like Apache and SMB running on the machine
-# Last Edited: 6/15/18 Julian Thies
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
+
+### VARIABLES
 runServ="/tmp/runningservices.txt"
 
 checkApache="$(ps aux | grep '/usr/sbin/httpd' | grep -v 'grep /usr/sbin/httpd')"
 checkAFP="$(launchctl list | grep AppleFileServer)" 
 checkSMB="$(launchctl list | grep smbd)"
 
+### SCRIPT
 # check for Apache
 if [ "$checkApache" != "" ] ; then
 	echo "Apache is running" >> "$runServ"
@@ -31,3 +34,4 @@ if [ -e "$runServ" ] ; then
 else
 	echo "<result>None</result>"
 fi
+# -----------------------------------------------------------------------------
