@@ -3,7 +3,7 @@
 # detectOldPersistenceMethods.sh
 # check for modified system files that could be used by malware for persistence
 # (deprecated methods, 10.9 and earlier)
-# Last Edited: 5/29/18
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 # rc.common
 md5RCCommon="28ce428faefe6168618867f3ff5527f9"
@@ -37,3 +37,4 @@ fi
 if [ -e /tmp/lc.txt ] ; then
 	rm /tmp/lc.txt
 fi
+# -----------------------------------------------------------------------------
