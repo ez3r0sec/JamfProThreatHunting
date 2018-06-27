@@ -1,7 +1,9 @@
 #!/usr/bin/python
+# -----------------------------------------------------------------------------
 # detectAntiForensics.py
 # attempt to detect anti-forensic/detection techniques on macOS
-# Last Edited: 6/25/17 Julian Thies
+# Last Edited: 6/27/17 Julian Thies
+# -----------------------------------------------------------------------------
 
 ### IMPORTS
 import os
@@ -39,3 +41,4 @@ def check_fseventsd(outputfile):
 check_fseventsd(results)
 # addtl technique detections to come
 read_result_file(results)
+# -----------------------------------------------------------------------------
