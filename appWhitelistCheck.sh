@@ -4,7 +4,7 @@
 # check installed apps against app whitelists
 # method is not the most effective due to only using file paths and names,
 #+ however it could be useful for finding malware
-# Last Edited: 6/15/18 Julian Thies
+# Last Edited: 6/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -420,3 +420,4 @@ rm "$foundFile"
 if [ -e "$resultsFile" ] ; then
 	rm "$resultsFile"
 fi
+# -----------------------------------------------------------------------------
