@@ -10,17 +10,20 @@
 # -----------------------------------------------------------------------------
 
 ### SCRIPT
-ls -1 > /tmp/scripts.txt
+ls -1 *.sh > /tmp/scripts.txt
+ls -1 *.py >> /tmp/scripts.txt
 
 cat /tmp/scripts.txt | while read line
 do
-	# give permission to the scripts
-	chmod +x "$(pwd)/$line"
-	echo "Running $line"
-	echo
-	# run the scripts
-	"$(pwd)/$line"
-	echo "====="
+	if [ "$line" != "forensicsAndLogCollection.sh" ] && [ "$line" != "requestFileInfo.sh" ] ; then
+		# give permission to the scripts
+		chmod +x "$(pwd)/$line"
+		echo "Running $line"
+		echo
+		# run the scripts
+		"$(pwd)/$line"
+		echo "====="
+	fi
 done
 
 echo
