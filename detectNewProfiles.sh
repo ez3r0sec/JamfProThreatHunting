@@ -6,7 +6,7 @@
 #+for persistence <hxxps://
 #+blog.malwarebytes[.]com/threat-analysis/2018/04/new-crossrider-variant
 #+-installs-configuration-profiles-on-macs/>
-# Last Edited: 6/27/18 Julian Thies
+# Last Edited: 7/10/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -71,7 +71,7 @@ else
 fi
 
 # clean up
-if [ -e "$foundFile ] ; then
+if [ -e "$foundFile" ] ; then
 	rm "$foundFile"
 fi
 # -----------------------------------------------------------------------------
