@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -----------------------------------------------------------------------------
 # detectFirefoxExtensions.py
-# look for safari extensions
-# Last Edited: 6/12/18 Julian Thies
+# look for firefox extensions
+# Last Edited: 7/12/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
