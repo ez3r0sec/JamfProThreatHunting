@@ -140,11 +140,11 @@ def search_file_type(fileType, searchPath):
 ### SCRIPT
 # make the function calls you want here
 
-find_file("/home/julian/.bash_history")
-survey_dir("/home/julian/Desktop")
-find_hash("/home/julian/Desktop", "49c2c219560ad79c1b783c8629b5303d1f23183b51eaad5a6942acb7de0384ea")
+#find_file()
+#survey_dir()
+#find_hash()
 network_connections("8.8.8.8")
-search_file_type(".plist", "/home")
+#search_file_type()
 
 ### DO NOT MODIFY
 read_result_file(resultsFile)
