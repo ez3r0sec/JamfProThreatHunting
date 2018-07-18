@@ -142,7 +142,10 @@ def search_file_type(fileType, searchPath):
 
 #find_file()
 #survey_dir()
-#find_hash()
+# new OSX.Shlayer Hash - 454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0
+#+https://www.virustotal.com/en/file/454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0/analysis/1531927012/
+
+find_hash("/", "454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0")
 network_connections("8.8.8.8")
 #search_file_type()
 
