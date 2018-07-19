@@ -2,16 +2,18 @@
 # -----------------------------------------------------------------------------
 # searchIOCs.py
 # extension attribute script that can be crafted to search for various specific IOCs in an ad hoc manner
-# Last Edited: 7/18/18 Julian Thies
+# Last Edited: 7/19/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
 import os
 import re
+import glob
 import hashlib
 
 ### VARIABLES
 resultsFile = "/tmp/results.txt"
+userList = glob.glob('/Users/*')
 
 ### FUNCTIONS
 ### base functions
@@ -67,6 +69,17 @@ def find_file(filepath):
 		write_to_file(resultsFile, filepath + "," + fileHash)
     else:
         write_to_file(resultsFile, "File " + filepath + "  not found")
+
+# Look for a file at a certain location within each user home or library directories
+def find_file_user(userlist, filepath):
+	write_to_file(resultsFile, "Searching user directories for /User/*" + filepath)
+	for i in range(len(userlist):
+		targetPath = os.path.join(userlist[i], filepath)
+		if os.path.exists(targetPath):
+			fileHash = hash_file(targetPath)
+			write_to_file(resultsFile, targetPath + "," + fileHash)
+		else:
+			pass
 		
 # look at all the files in a specific directory
 def survey_dir(path):
@@ -138,14 +151,19 @@ def search_file_type(fileType, searchPath):
 
 
 ### SCRIPT
-# make the function calls you want here
+# make the function calls you want here (some real-world examples included)
 
 #find_file()
+#find_file_user()		   
+# unclassified malware
+# https://www.virustotal.com/#/file/d46fca87d7f81fffbad70fce35b6009848ac0b1993404aa7a81259322fc93405/behavior
+find_file_user(userList, "/Library/X2441139MAC/Temp/internal.sh")
+
 #survey_dir()
 # new OSX.Shlayer Hash - 454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0
 #+https://www.virustotal.com/en/file/454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0/analysis/1531927012/
-
 find_hash("/", "454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0")
+
 network_connections("8.8.8.8")
 #search_file_type()
 
