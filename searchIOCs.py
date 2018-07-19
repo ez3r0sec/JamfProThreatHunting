@@ -29,6 +29,7 @@ def read_result_file(filename):
         with open(filename, 'r') as f:
             fileContent = f.read()
         print("<result>" + fileContent + "</result>")
+	os.remove(filename)
     else:
         print("<result>None</result>")
 
@@ -137,7 +138,7 @@ def network_connections(ip):
     else:
         write_to_file(resultsFile, host)
     netwFile.close()
-    #os.remove(netwFile)
+    os.remove(netwFile)
 
 # look for filetypes by a particular extension (fragile)
 ''' search for files matching the specified file type'''
