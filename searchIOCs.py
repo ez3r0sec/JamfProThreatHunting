@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -----------------------------------------------------------------------------
 # searchIOCs.py
-# extension attribute script that can be crafted to search for various specific IOCs in an ad hoc manner
+# extension attribute script that can be crafted to search for various specific 
+#+IOCs in an ad hoc manner
 # Last Edited: 7/19/18 Julian Thies
 # -----------------------------------------------------------------------------
 
@@ -168,5 +169,6 @@ network_connections("8.8.8.8")
 #search_file_type()
 
 ### DO NOT MODIFY
+# present results to the JSS
 read_result_file(resultsFile)
 # -----------------------------------------------------------------------------
