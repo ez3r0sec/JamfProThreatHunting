@@ -125,10 +125,10 @@ def network_connections(ip):
     nwFileName = "/tmp/network.txt"
     netwFile = open(nwFileName, "w")
     c = 0
-    while c < 10:
+    while c < 20:
         # call netstat at a random interval between 1 and 20 seconds and send to output file
         subprocess.call(['netstat', '-peanutw'], stdout=netwFile)
-        time.sleep(random.randint(1,20))
+        time.sleep(random.randint(1,5))
         c = c + 1
     # search for the IP using regex
     host = py_grep(nwFileName, ip)
