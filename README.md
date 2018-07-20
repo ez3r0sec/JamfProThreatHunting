@@ -27,31 +27,33 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
   
   1. Restrict the directories from which apps are allowed to run to /Applications and ~/Library in a configuration profile.
      Certain applications have components that run from subdirectories of ~/Library and with careful testing, even more 
-     strict launch directories can be specified to further control where malware can persistently execute.
+     strict launch directories can be specified to further control malware execution.
      
   2. Increase Computer Inventory Collection of .apps by adding custom search paths such as ~/Applications and ~/Library or 
      even ~/ and/or use the findFileType.py script template looking only for .app files and make a separate smart group.
      
   3. After increasing the directories monitored for .app bundles, start constructing a smart group of known malware .app 
      bundles that is updated periodically as new items are found and new .app indicators of compromise are released by the 
-     macOS security community. 
+     macOS security community. Using these brittle indicators may not be very effective but there is comparatively little
+     macOS malware in the wild compared to Windows malware. 
      
   4. Use the Restricted Software function of the JSS to block known malicious .app files from running in your environment and 
      set up email notifications if the application attempted to run. Also make sure that you supply a message to the user 
      when malicious .apps attempt to run so that the proper incident response procedures may be followed. The addition of new 
      IOCs to the Restricted Software records and smart group criteria can be be scripted using the Jamf API.
      
-  5. One way to isolate a machine when malware is detected is to scope a configuration profile that sets the curfew in 
-     parental controls to allow login for only 1 minute and scope a script to turn off active network interfaces.
+  5. Isolate machines quickly after detecting an infection. One way to isolate a machine when malware is detected is to scope 
+     a configuration profile that sets the curfew in parental controls to allow login for only 1 minute and scope a script to
+     turn off active network interfaces.
      
   6. Use the appWhitelistCheck.sh script to check for unknown .apps in your environment. This will take a considerable amount
      of tuning, however, once properly tuned, new malware that is in a .app bundle will be easy to find.
      
   7. The Parental Controls Configuration Profile payload has a feature to whitelist or blacklist URLs. If your managed fleet
-     is mostly mobile and users can work from home without using a VPN, this may be a good option to limit exposure to known
+     is mostly mobile and users can work from home without using a VPN, this may be an option to limit exposure to known
      bad domains or only allow access to domains that specific user roles need.
      
-  8. Limit where users can install apps from by. The JSS or Munki should be used to install all of the software users need as
+  8. Limit where users can download apps. The JSS or Munki should be used to install all of the software users need so that
      these systems can be controlled by the systems administrator and/or security. Set the Restrictions payload of a 
      Configuration Profile to only allow apps from the Mac App Store. For added security, only allow the app store for 
      updates and push out apps from the Mac App Store using VPP.
