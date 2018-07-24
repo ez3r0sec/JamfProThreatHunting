@@ -25,22 +25,25 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
      configurations. Doing so will not only aid hunting, the general security posture of your managed fleet will be much
      stronger.
   
-  1. Restrict the directories from which apps are allowed to run to /Applications and ~/Library in a configuration profile.
-     Certain applications have components that run from subdirectories of ~/Library and with careful testing, even more 
-     strict launch directories can be specified to further control malware execution.
+  1. Restrict the directories from which apps are allowed to run to /Applications, ~/Applications, and ~/Library in a 
+     configuration profile. There are no common reasons for applications to reside out side of /Applications, ~/Library, and
+     ~/Applications. Certain applications have components that run from subdirectories of ~/Library and with testing, 
+     even more strict launch directories can be specified to further control malware execution.
      
   2. Increase Computer Inventory Collection of .apps by adding custom search paths such as ~/Applications and ~/Library or 
      even ~/ and/or use the findFileType.py script template looking only for .app files and make a separate smart group.
      
   3. After increasing the directories monitored for .app bundles, start constructing a smart group of known malware .app 
      bundles that is updated periodically as new items are found and new .app indicators of compromise are released by the 
-     macOS security community. Using these brittle indicators may not be very effective but there is comparatively little
-     macOS malware in the wild compared to Windows malware. 
+     macOS security community. Using these brittle indicators provides high fidelity signal but will not catch everything.
+     Luckily, there is comparatively little macOS malware in the wild compared to Windows malware so the type of indicators 
+     that are considered brittle in Windows environments, may actually be more effective in macOS environments.
      
   4. Use the Restricted Software function of the JSS to block known malicious .app files from running in your environment and 
      set up email notifications if the application attempted to run. Also make sure that you supply a message to the user 
      when malicious .apps attempt to run so that the proper incident response procedures may be followed. The addition of new 
-     IOCs to the Restricted Software records and smart group criteria can be be scripted using the Jamf API.
+     IOCs to the Restricted Software records and smart group criteria can be be scripted using the Jamf API 
+     (https://developer.jamf.com/apis/jamf-pro-api/index)
      
   5. Isolate machines quickly after detecting an infection. One way to isolate a machine when malware is detected is to scope 
      a configuration profile that sets the curfew in parental controls to allow login for only 1 minute and scope a script to
@@ -61,9 +64,9 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
   9. Most macOS malware in the wild still relies on installation via an application with a trojan horse. Use the principle of 
      least privilege to determine which users or groups of users need administrator rights to their machines and carefully 
      control this access. It is much more difficult for malware to gain root privileges if the user is unable to provide it 
-     to the malware. Many malware specimens such as OSX.Pirrit (https://objective-see.com/blog/blog_0x0E.html) rely on the 
+     to malware. Many malware specimens such as OSX.Pirrit (https://objective-see.com/blog/blog_0x0E.html) rely on the 
      user entering their administrator password into a prompt. Alternatively, users could be given an administrator account 
-     on their Mac but are required to use a standard user account for browsing and their normal tasks.
+     on their Mac but are required to use a standard user account for browsing and normal tasks.
      
  10. Enable the Application Layer Firewall (ALF) using a configuration profile. Installed applications will automatically be 
      allowed through. Note that the macOS ALF only blocks inbound connections. MacOS also has Packet Filter (PF) installed 
