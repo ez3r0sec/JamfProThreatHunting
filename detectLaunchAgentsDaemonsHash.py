@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectLaunchAgentsDaemons.py
 # display launch agents and daemons
-# Last Edited: 6/12/18 Julian Thies
+# Last Edited: 7/25/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -57,7 +57,7 @@ def read_result_file(filename):
 		with open(filename, 'r') as f:
 	        	fileContent = f.read()
 		print("<result>" + fileContent + "</result>")
-			os.remove(filename)
+		os.remove(filename)
 	else:
 		print("<result>None</result>")
 
