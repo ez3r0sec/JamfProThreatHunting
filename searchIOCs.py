@@ -3,7 +3,7 @@
 # searchIOCs.py
 # extension attribute script that can be crafted to search for various specific 
 #+IOCs in an ad hoc manner
-# Last Edited: 7/19/18 Julian Thies
+# Last Edited: 7/27/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -138,7 +138,7 @@ def network_connections(ip):
     else:
         write_to_file(resultsFile, host)
     netwFile.close()
-    os.remove(netwFile)
+    os.remove(nwFileName)
 
 # look for filetypes by a particular extension (fragile)
 ''' search for files matching the specified file type'''
