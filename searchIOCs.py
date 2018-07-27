@@ -75,7 +75,7 @@ def find_file(filepath):
 # Look for a file at a certain location within each user home or library directories
 def find_file_user(userlist, filepath):
 	write_to_file(resultsFile, "Searching user directories for /User/*" + filepath)
-	for i in range(len(userlist):
+	for i in range(len(userlist)):
 		targetPath = os.path.join(userlist[i], filepath)
 		if os.path.exists(targetPath):
 			fileHash = hash_file(targetPath)
