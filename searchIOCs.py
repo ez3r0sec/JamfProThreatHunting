@@ -156,17 +156,21 @@ def search_file_type(fileType, searchPath):
 # make the function calls you want here (some real-world examples included)
 
 #find_file()
+
 #find_file_user()		   
 # unclassified malware
 # https://www.virustotal.com/#/file/d46fca87d7f81fffbad70fce35b6009848ac0b1993404aa7a81259322fc93405/behavior
 find_file_user(userList, "/Library/X2441139MAC/Temp/internal.sh")
 
 #survey_dir()
+
 # new OSX.Shlayer Hash - 454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0
 #+https://www.virustotal.com/en/file/454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0/analysis/1531927012/
+# DO NOT USE OFTEN, TAKES A LOT OF RESOURCES
 find_hash("/", "454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0")
 
 network_connections("8.8.8.8")
+
 #search_file_type()
 
 ### DO NOT MODIFY
