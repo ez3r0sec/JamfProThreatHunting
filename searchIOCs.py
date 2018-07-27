@@ -151,9 +151,28 @@ def search_file_type(fileType, searchPath):
                 fileHash = hash_file(filePath)
                 write_to_file(resultsFile, filePath + "," + fileHash)
 
+''' look for process names '''
+def search_process(processname):
+	pFile = '/tmp/processes.txt'
+	processFile = open(pFile, "w")
+	c = 0
+	while c < 20:
+		subprocess.call(['ps', 'aux'], stdout=processFile)
+		time.sleep(random.randint(1,5))
+		c = c + 1
+	
+	process = py_grep(processFile, processname)
+	if not process:
+		write_to_file(resultsFile, "No process called " + processname + " detected")
+	else:
+		write_to_file(resultsFile, process)
+	processFile.close()
+	os.remove(pFile)
+
 
 ### SCRIPT
 # make the function calls you want here (some real-world examples included)
+###
 
 #find_file()
 
@@ -167,11 +186,13 @@ find_file_user(userList, "/Library/X2441139MAC/Temp/internal.sh")
 # new OSX.Shlayer Hash - 454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0
 #+https://www.virustotal.com/en/file/454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0/analysis/1531927012/
 # DO NOT USE OFTEN, TAKES A LOT OF RESOURCES
-find_hash("/", "454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0")
+#find_hash("/", "454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0")
 
 network_connections("8.8.8.8")
 
 #search_file_type()
+
+#search_process()
 
 ### DO NOT MODIFY
 # present results to the JSS
