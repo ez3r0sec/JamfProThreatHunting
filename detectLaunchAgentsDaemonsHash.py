@@ -49,7 +49,7 @@ def check_results(filename):
 		with open(filename, 'r') as f:
 	    	contents = f.read()
 	        with open(resultFile, 'a') as f:
-			f.write(contents)
+				f.write(contents)
 	os.remove(filename)
 
 def read_result_file(filename):
