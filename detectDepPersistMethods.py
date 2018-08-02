@@ -3,7 +3,7 @@
 # detectDepPersistMethods.py
 # check for modified system files that could be used for persistence
 # (deprecated methods, 10.9 and earlier)
-# Last Edited: 7/2/18 Julian Thies
+# Last Edited: 8/2/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -73,8 +73,12 @@ if os.path.exists("/etc/launchd.conf"):
         write_to_file(resultsFile, checkBsexec)
 
 # read the results
-if len(open(resultsFile)).readlines() == 0:
-    os.remove(resultsFile)
-
-read_result_file(resultsFile)
+if os.path.exists(resultsFile):
+	if len(open(resultsFile)).readlines() == 0:
+    	print("<result>None</result>")
+		os.remove(resultsFile)
+	else:
+		read_result_file(resultsFile)
+else:
+	print("<result>None</result>")
 # -----------------------------------------------------------------------------
