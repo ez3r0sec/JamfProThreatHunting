@@ -4,7 +4,7 @@
 # check installed apps against app whitelists
 # method is not the most effective due to only using file paths and names,
 #+ however it could be useful for finding malware
-# Last Edited: 6/27/18 Julian Thies
+# Last Edited: 8/2/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -392,6 +392,7 @@ function check_white_lists {
 			rm "$matchFile"
 		else
 			# if there is no match, hash it and present it
+			# NEED a way to handle multiple files and directories within an app bundle
 			hashPath="$(ls -1 "$line/Contents/MacOS")"
 			sha256="$(shasum -a 256 "$line/Contents/MacOS/$hashPath" | awk '$1 {print $1}')"
 			echo "$line -- SHA256:  $sha256" >> "$resultsFile"
