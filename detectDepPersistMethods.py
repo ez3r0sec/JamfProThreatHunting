@@ -75,7 +75,7 @@ if os.path.exists("/etc/launchd.conf"):
 # read the results
 if os.path.exists(resultsFile):
 	if len(open(resultsFile)).readlines() == 0:
-    	print("<result>None</result>")
+    		print("<result>None</result>")
 		os.remove(resultsFile)
 	else:
 		read_result_file(resultsFile)
