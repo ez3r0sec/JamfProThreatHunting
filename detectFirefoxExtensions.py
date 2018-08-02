@@ -51,6 +51,6 @@ def read_result_file(filename):
 		print("<result>None</result>")
 
 ### SCRIPT
-search_file_type("XPI", "/")
+search_file_type("xpi", "/")
 read_result_file(resultsFile)
 # -----------------------------------------------------------------------------
