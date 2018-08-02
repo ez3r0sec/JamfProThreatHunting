@@ -24,7 +24,7 @@ def hash_file(filename):
 	sha256Hash = hashlib.sha256()
 	with open(filename, 'rb') as f:
 		while True:
-        	data = f.read(bufferSize)
+			data = f.read(bufferSize)
 			if not data:
 				break
 			sha256Hash.update(data)
