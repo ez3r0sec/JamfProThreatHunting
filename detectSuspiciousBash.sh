@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # detectSuspiciousBash.sh
 # look for evidence of obfuscation or suspicious commands in bash_history
-# Last Edited: 6/27/18 Julian Thies
+# Last Edited: 8/2/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
@@ -26,8 +26,10 @@ declare -a Susp_CLs=(
 	"cron"
 	"zip"
 	"?"
-	"*"
 	";"
+	"launchctl"
+	"x7"
+	"%20"
 )
 
 ### FUNCTIONS
