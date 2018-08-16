@@ -17,7 +17,7 @@ cat /tmp/scripts.txt | while read line
 do
 	if [ "$line" != "forensicsAndLogCollection.sh" ] && [ "$line" != "requestFileInfo.sh" ] ; then
 		# give permission to the scripts
-		chmod +x "$(pwd)/$line"
+		chmod +x "$line"
 		echo "Running $line"
 		echo
 		# run the scripts
