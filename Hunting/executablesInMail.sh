@@ -1,7 +1,9 @@
 #!/bin/bash
+# -----------------------------------------------------------------------------
 # executablesInMail.sh
 # check Mail.app directories for executables
 # Last Edited: 8/21/18 Julian Thies
+# -----------------------------------------------------------------------------
 
 ### VARIABLES
 users_file="/tmp/users.txt"
@@ -64,3 +66,4 @@ check_exes
 hash_exes
 read_results
 clean_up
+# -----------------------------------------------------------------------------
