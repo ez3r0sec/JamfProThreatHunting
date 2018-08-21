@@ -56,7 +56,7 @@ Certain settings in the JSS and practices may also ease malware hunting. Some ge
      is mostly mobile and users can work from home without using a VPN, this may be an option to limit exposure to known
      bad domains or only allow access to domains that specific user roles need.
      
-  8. Limit where users can download apps. The JSS or Munki should be used to install all of the software users need so that
+  8. Limit application sources: the JSS or Munki should be used to install all of the software users need so that
      these systems can be controlled by the systems administrator and/or security. Set the Restrictions payload of a 
      Configuration Profile to only allow apps from the Mac App Store. For added security, only allow the app store for 
      updates and push out apps from the Mac App Store using VPP.
