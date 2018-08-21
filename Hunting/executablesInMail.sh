@@ -65,5 +65,4 @@ collect_exes
 check_exes
 hash_exes
 read_results
-clean_up
 # -----------------------------------------------------------------------------
