@@ -2,7 +2,9 @@
 
 The work hosted here is designed as Extension Attribute scripts to facilitate malware hunting using the inventory collection 
 capabilites of the JSS. Many suspicious indicators can be collected using scripts so that administrators or security 
-personnel can find malware installed on managed devices or other potential indicators of compromise. 
+personnel can find malware installed on managed devices or other potential indicators of compromise. The "Policies" 
+directory hosts related policies to collect forensic data about files (requestFileInfo.sh) and devices 
+(forensicsAndLogCollection.sh).
 
 If the suspicious indicator is not found, the scripts are written to return 'None' to the JSS. Setting an "all clear" result 
 as none across scripts allows for flexible grouping of criteria to generate smart groups. Smart groups could be
