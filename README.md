@@ -15,7 +15,7 @@ immediately. If there are just a few strange .exe files on a machine, it may be 
 medium or lower risk-level smart group. 
 
 In either case, each device in the smart group can then be investigated further 
-within the JSS or with other custom scripts such as Yelp's osxcollector (https://github.com/Yelp/osxcollector), 
+within the JSS or with other custom scripts such as Yelp's osxcollector (hxxps://github[.]com/Yelp/osxcollector), 
 requestFileInfo.sh, and forensicsAndLogCollection.sh scripts in the repository. Note that the two aforementioned scripts in
 the repository require the target device to be on the LAN and there must be an SMB/Samba server with a share designed to
 capture the results.
@@ -46,7 +46,7 @@ Some general recommendations are to:
      set up email notifications if the application attempted to run. Also make sure that you supply a message to the user 
      when malicious .apps attempt to run so that the proper incident response procedures may be followed. The addition of new 
      IOCs to the Restricted Software records and smart group criteria can be be scripted using the Jamf API 
-     (https://developer.jamf.com/apis/jamf-pro-api/index)
+     (hxxps://developer.jamf[.]com/apis/jamf-pro-api/index)
      
   5. Isolate machines quickly after detecting an infection. One way to isolate a machine when malware is detected is to scope 
      a configuration profile that sets the curfew in parental controls to allow login for only 1 minute and scope a script to
@@ -67,7 +67,7 @@ Some general recommendations are to:
   9. Most macOS malware in the wild still relies on installation via an application with a trojan horse. Use the principle of 
      least privilege to determine which users or groups of users need administrator rights to their machines and carefully 
      control this access. It is much more difficult for malware to gain root privileges if the user is unable to provide it 
-     to malware. Many malware specimens such as OSX.Pirrit (https://objective-see.com/blog/blog_0x0E.html) rely on the 
+     to malware. Many malware specimens such as OSX.Pirrit (hxxps://objective-see[.]com/blog/blog_0x0E.html) rely on the 
      user entering their administrator password into a prompt. Alternatively, users could be given an administrator account 
      on their Mac but are required to use a standard user account for browsing and normal tasks.
      
