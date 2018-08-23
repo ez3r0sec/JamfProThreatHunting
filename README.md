@@ -20,7 +20,8 @@ requestFileInfo.sh, and forensicsAndLogCollection.sh scripts in the repository. 
 the repository require the target device to be on the LAN and there must be an SMB/Samba server with a share designed to
 capture the results.
 
-Certain settings in the JSS and practices may also ease malware hunting. Some general recommendations are to:
+Certain settings in the JSS and practices may also ease malware hunting and potentially prevent some security issues.
+Some general recommendations are to:
 
   0. Implement the CIS Benchmarks for macOS (hxxps://github[.]com/jamfprofessionalservices/CIS-for-macOS-Sierra) and 
      maintain security settings using policies and smart groups in the JSS to manage desired state of security 
