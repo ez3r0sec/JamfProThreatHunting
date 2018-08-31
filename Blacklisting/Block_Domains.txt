@@ -1,6 +1,6 @@
 ####################################################################
 ###                         Block Domains                        ###
-### Domains that can be blocked with Restricted Software Records ###
+### Domains that can be blocked with a configuration profiles    ###
 ### Last Edited: 8/31/18                                         ###
 ####################################################################
 
