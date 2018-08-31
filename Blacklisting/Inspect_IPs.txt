@@ -2,3 +2,8 @@
 ## https://urlscan.io/result/75ce8add-5c39-4521-b322-3976ac7178cb
 # MacKeeper
 34.199.228.232
+
+### Adware Sites
+## https://urlscan.io/result/e379f2c4-ab15-4931-a8fc-b3f7f8f16b5f#iocs
+# Bundlore/BucaApps
+172.217.18.166
