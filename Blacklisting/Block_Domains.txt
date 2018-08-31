@@ -1,6 +1,7 @@
 ####################################################################
-###                          Block Domains                       ###
+###                         Block Domains                        ###
 ### Domains that can be blocked with Restricted Software Records ###
+### Last Edited: 8/31/18                                         ###
 ####################################################################
 
 ### Adware Search Pages
@@ -27,3 +28,8 @@ mackeeperapp.mackeeper.com
 ## https://urlscan.io/result/1c42bf78-5bc9-49db-baba-f419c1ab01c7/
 letmacworkfaster.site
 
+
+### Malware Traffic
+## https://urlscan.io/result/276843f6-facd-40d8-a08b-053580a4d770
+# Conduit
+service.macinstallerinfo.com
