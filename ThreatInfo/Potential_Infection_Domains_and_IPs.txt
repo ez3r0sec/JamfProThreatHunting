@@ -1,5 +1,5 @@
 ####################################################################
-###                    Block Domains  / IPs                      ###
+###              Potential Infection Domains  / IPs              ###
 ### Domains that can be blocked with a configuration profiles    ###
 ### Last Edited: 8/31/18                                         ###
 ####################################################################
