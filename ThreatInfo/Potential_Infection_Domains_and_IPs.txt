@@ -70,3 +70,7 @@ cleannow.today
 ### Alternative App Stores
 macupdate.com
 download.com (CNET)
+mac-torrents.com
+sharefreeall.com
+www.macneed.com
+
