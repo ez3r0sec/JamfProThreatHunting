@@ -1,7 +1,7 @@
 ####################################################################
 ###              Potential Infection Domains  / IPs              ###
 ### Domains that can be blocked with a configuration profiles    ###
-### Last Edited: 9/6/18                                          ###
+### Last Edited: 9/7/18                                          ###
 ####################################################################
 
 ### Adware Search Pages
