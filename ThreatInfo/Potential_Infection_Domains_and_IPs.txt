@@ -67,5 +67,6 @@ freshmac.space
 letmacwork.today
 cleannow.today
 
-### Alternative App Store
+### Alternative App Stores
 macupdate.com
+download.com (CNET)
