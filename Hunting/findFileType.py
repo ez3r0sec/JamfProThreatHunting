@@ -2,11 +2,12 @@
 # -----------------------------------------------------------------------------
 # findFileType.py
 # find files matching the specified types
-# Last Edited: 8/2/18 Julian Thies
+# Last Edited: 9/10/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
 import os
+import hashlib
 
 ### VARIABLES
 resultFile = "/tmp/results.txt"
@@ -32,6 +33,19 @@ def check_results(filename):
                 contents = f.read()
                 with open(resultFile, 'a') as f:
                     f.write(contents)
+                    
+''' take a sha256 hash of found files '''
+def hash_file(filename):
+	bufferSize = 65536
+	sha256Hash = hashlib.sha256()
+	with open(filename, 'rb') as f:
+		while True:
+			data = f.read(bufferSize)
+			if not data: 
+				break
+			sha256Hash.update(data)
+	hashResult = "{0}".format(sha256Hash.hexdigest())
+	return(hashResult)
 
 def search_file_type(fileType, searchPath):
     # recursively search for files with .XXX extension
@@ -44,9 +58,11 @@ def search_file_type(fileType, searchPath):
             if file.endswith(fileType):
                 # records the full file path
                 filePath = os.path.join(root, file)
+                # hash the file
+                hash = hash_file(filePath)
                 # make sure we are doing floating point calcs
                 fileSizeKB = os.path.getsize(filePath) / 1000.0
-                append_file(outfile, os.path.join(root, file) + " == " + str(fileSizeKB) + " KB")
+                append_file(outfile, filePath + " HASH: " + hash + " SIZE:" + str(fileSizeKB) + " KB")
     check_results(outfile)
 
 def clean_up(directory, fileType):
@@ -56,40 +72,11 @@ def clean_up(directory, fileType):
             os.remove(directory + "/" + directoryList[i])
 
 ### SCRIPT
-''' write a new function call for each file type '''
-#search_file_type("file extension", "search directory")
-search_file_type(".sh", "/tmp")
-search_file_type(".sh", "/Users")
-search_file_type(".py", "/tmp")
-search_file_type(".py", "/Users")
-search_file_type(".exe", "/tmp")
-search_file_type(".exe", "/Users")
-search_file_type(".msi", "/tmp")
-search_file_type(".msi", "/Users")
-search_file_type(".dll", "/tmp")
-search_file_type(".dll", "/Users")
-search_file_type(".jar", "/tmp")
-search_file_type(".jar", "/Users")
-search_file_type(".php", "/tmp")
-search_file_type(".php", "/Users")
-search_file_type(".lua", "/tmp")
-search_file_type(".lua", "/Users")
-search_file_type(".js", "/tmp")
-search_file_type(".js", "/Users")
-search_file_type(".jsp", "/tmp")
-search_file_type(".jsp", "/Users")
-search_file_type(".deb", "/tmp")
-search_file_type(".deb", "/Users")
-search_file_type(".rpm", "/tmp")
-search_file_type(".rpm", "/Users")
-search_file_type(".tar.gz", "/tmp")
-search_file_type(".tar.gz", "/Users")
-search_file_type(".iso", "/tmp")
-search_file_type(".iso", "/Users")
-search_file_type(".7z", "/tmp")
-search_file_type(".7z", "/Users")
-search_file_type(".tar", "/tmp")
-search_file_type(".tar", "/Users")
+searchList = [".sh", ".py", ".exe", ".msi", ".dll", ".jar", ".php", ".lua", ".js", ".jsp", ".deb", ".rpm", ".tar.gz", ".iso", ".7z", ".tar"]
+
+for i in range(len(searchList)):
+	search_file_type(searchList[i], "/tmp")
+	search_file_type(searchList[i], "/Users")
 
 ''' read the results file '''
 read_result_file(resultFile)
