@@ -1,5 +1,7 @@
-### Adware Search Pages
-## https://urlscan.io/result/18570363-754d-4f03-b46e-48762c581681
+### Post-Installation
+
+## Adware Search Pages
+# https://urlscan.io/result/18570363-754d-4f03-b46e-48762c581681
 # Bundlore/BucaApps
 search.dev.dooryov.com
 search.romandos.com
