@@ -1,8 +1,11 @@
-### Download pages
-## https://urlscan.io/result/75ce8add-5c39-4521-b322-3976ac7178cb
+
+### Prevention
+
+## Download pages
+# https://urlscan.io/result/75ce8add-5c39-4521-b322-3976ac7178cb
 # MacKeeper
 mackeeperapp.mackeeper.com
-## https://urlscan.io/result/1c42bf78-5bc9-49db-baba-f419c1ab01c7/
+# https://urlscan.io/result/1c42bf78-5bc9-49db-baba-f419c1ab01c7/
 letmacworkfaster.site
 
 getmackeeper.site
@@ -35,7 +38,7 @@ freshmac.space
 letmacwork.today
 cleannow.today
 
-### Alternative App Stores
+## Alternative App Stores
 macupdate.com
 download.com (CNET)
 download.cnet.com/mac
