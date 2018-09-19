@@ -71,7 +71,7 @@ Some general recommendations are to:
      user entering their administrator password into a prompt. Alternatively, users could be given an administrator account 
      on their Mac but are required to use a standard user account for browsing and normal tasks.
      
- 10. Enable the Application Layer Firewall (ALF) using a configuration profile. Installed applications will automatically be 
-     allowed through. Note that the macOS ALF only blocks inbound connections. MacOS also has Packet Filter (PF) installed 
-     and custom rules can be written for PF to block lateral movement and perform many other useful blacklisting and 
-     whitelisting.
+ 10. Enable the Application Layer Firewall (ALF) using a configuration profile. Note that the macOS ALF only blocks inbound 
+     connections and installed applications will automatically be allowed through. MacOS also has Packet Filter (PF) 
+     installed and custom rules can be written for PF to block lateral movement and perform many other useful blacklisting 
+     and whitelisting.
