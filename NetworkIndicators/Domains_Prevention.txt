@@ -38,10 +38,15 @@ freshmac.space
 letmacwork.today
 cleannow.today
 
-## Alternative App Stores
+## Alternative App Sources
 macupdate.com
 download.com (CNET)
 download.cnet.com/mac
 mac-torrents.com
+www.mac-torrent-download.net
 sharefreeall.com
 www.macneed.com
+www.imojado.org
+sharkdownloads.com
+haxmac.me
+
