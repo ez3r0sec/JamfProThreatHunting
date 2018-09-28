@@ -4,6 +4,7 @@
 
 # genieo
 34.224.170.119
+www[.]virustotal[.]com/en/domain/search.genieo.com/information
 
 # advanced mac cleaner
 64.185.181.238
