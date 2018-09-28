@@ -1,3 +1,9 @@
 ### Post-Installation
 # search page
 23.21.245.244
+
+# genieo
+34.224.170.119
+
+# advanced mac cleaner
+64.185.181.238
