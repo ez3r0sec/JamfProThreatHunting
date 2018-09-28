@@ -18,6 +18,12 @@ www.chumsearch.com
 
 # Genieo
 search.genieo.com
+search.strtpoint.com
+feed.chunckapp.com
+www.searchshp.com
+search.safefinderformac.com
+
+advancedmactuner.com
 
 ### Traffic
 ## https://urlscan.io/result/276843f6-facd-40d8-a08b-053580a4d770
