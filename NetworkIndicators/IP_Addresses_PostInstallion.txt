@@ -51,3 +51,7 @@
 
 # advanced mac cleaner
 64.185.181.238
+
+# conduit
+# hxxps://www.virustotal[.]com/#/domain/service.macinstallerinfo.com
+104.239.223.14
