@@ -6,7 +6,6 @@
 search.dev.dooryov.com
 search.romandos.com
 search.smokyashan.com
-search.bilabordnet.com
 search.cocoshamen.com
 search.schooldozer.com
 search.nelrozplace.com
@@ -24,6 +23,13 @@ search.sleepshadow.com
 2018-09-13	search.ranimaker.com
 2018-09-11	search.papershorty.com
 2018-09-11	search.societycake.com
+2018-08-31	search.otwexplain.com
+2018-08-31	search_b.otwexplain.com
+2018-08-27	search.quitelex.com
+2018-08-24	search.goldraiven.com
+2018-08-21	search.bilabordnet.com
+2018-08-21	search.epolife.com
+2018-08-20	search.mykotlerino.com
 
 www.chumsearch.com
 
