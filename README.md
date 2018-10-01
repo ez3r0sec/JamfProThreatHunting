@@ -17,8 +17,8 @@ medium or lower risk-level smart group.
 In either case, each device in the smart group can then be investigated further 
 within the JSS or with other custom scripts such as Yelp's osxcollector (hxxps://github[.]com/Yelp/osxcollector), 
 requestFileInfo.sh, and forensicsAndLogCollection.sh scripts in the repository. Note that the two aforementioned scripts in
-the repository require the target device to be on the LAN and there must be an SMB/Samba server with a share designed to
-capture the results.
+the repository require the target device to be on the LAN and an SMB/Samba server with a share designed to capture the 
+results.
 
 Certain settings in the JSS and practices may also ease malware hunting and potentially prevent some security issues.
 Some general recommendations are to:
