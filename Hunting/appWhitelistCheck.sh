@@ -83,6 +83,7 @@ declare -a Builtin_App_Whitelist=(
 	"/Applications/Utilities/Terminal.app"
 	"/Applications/Utilities/VoiceOver Utility.app"
 	"/Applications/Utilities/VoiceOver Utility.app/Contents/OtherBinaries/VoiceOverUtilityCacheBuilder.app"
+	"/Applications/Utilities/X11.app"
 )
 
 # whitelist of apps housed in /Library
@@ -114,6 +115,25 @@ declare -a Library_App_Whitelist=(
 
 # whitelist of apps housed in /System/Library and other UNIXy directories
 declare -a System_App_WhiteList=(
+	"/System/Library/PrivateFrameworks/ParsecUI.framework/Versions/A/Support/SpotlightNetHelper.app"
+	"/System/Library/Input Methods/TCIMReduced.app"
+	"/System/Library/Input Methods/Switch Control.app/Contents/Resources/Switch Control Panel Editor.app"
+	"/System/Library/Input Methods/SCIMReduced.app"
+	"/System/Library/Input Methods/SCIMReduced.app"
+	"/System/Library/Input Methods/KoreanIM.app/Contents/HanjaTool.app"
+	"/System/Library/Image Capture/Support/Image Capture Extension.app"
+	"/System/Library/Frameworks/WebKit.framework/WebProcess.app"
+	"/System/Library/Frameworks/WebKit.framework/Versions/A/WebProcess.app"
+	"/System/Library/Frameworks/WebKit.framework/Versions/A/PluginProcess.app"
+	"/System/Library/Frameworks/WebKit.framework/Versions/A/NetworkProcess.app"
+	"/System/Library/Frameworks/WebKit.framework/Versions/A/DatabaseProcess.app"
+	"/System/Library/Frameworks/WebKit.framework/PluginProcess.app"
+	"/System/Library/Frameworks/WebKit.framework/NetworkProcess.app"
+	"/System/Library/Frameworks/WebKit.framework/DatabaseProcess.app"
+	"/System/Library/CoreServices/ManagedClient.app/Contents/Resources/HomeSync.app"
+	"/System/Library/CoreServices/Folder Actions Setup.app"
+	"/System/Library/CoreServices/FileSyncAgent.app"
+	"/System/Library/CoreServices/File Sync.app"
 	"/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/MobileDeviceUpdater.app"
 	"/usr/libexec/MiniTerm.app"
 	"/System/Library/ColorSync/Calibrators/Display Calibrator.app"
