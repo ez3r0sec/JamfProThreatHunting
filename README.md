@@ -1,77 +1,28 @@
 # JamfProThreatHunting
 
-The work hosted here is designed as Extension Attribute scripts to facilitate malware hunting using the inventory collection 
-capabilites of the JSS. Many suspicious indicators can be collected using scripts so that administrators or security 
-personnel can find malware installed on managed devices or other potential indicators of compromise. The "Policies" 
-directory hosts related policies to collect forensic data about files (requestFileInfo.sh) and devices 
-(forensicsAndLogCollection.sh).
+The Jamf Pro Server and agent are incredibly useful tools for collecting information about hosts and controlling them through policies, scripts, and configuration profiles. Using Extension Attribute scripts, IT administrators can task the Jamf agent installed on every managed machine to collect information relevant to the security those devices. The work hosted here is a collection of Extension Attribute scripts and scripts designed to perform an action in a policy, for example, to collect forensic information from hosts that are potentially compromised.
 
-If the suspicious indicator is not found, the scripts are written to return 'None' to the JSS. Setting an "all clear" result 
-as none across scripts allows for flexible grouping of criteria to generate smart groups. Smart groups could be
-constructed for each script individually or scripts can be grouped into smart groups for high-medium-low indicator ratings
-based on the perceived amount of risk. For example, if the sudoers file has been edited with 'defaults !tty_tickets' or 
-there are root crontabs that run unknown files, that machine has likely been owned and is a risk that should be dealt with 
-immediately. If there are just a few strange .exe files on a machine, it may be of less concern and could be placed in a 
-medium or lower risk-level smart group. 
+# Why Use Extension Attributes?
 
-In either case, each device in the smart group can then be investigated further 
-within the JSS or with other custom scripts such as Yelp's osxcollector (hxxps://github[.]com/Yelp/osxcollector), 
-requestFileInfo.sh, and forensicsAndLogCollection.sh scripts in the repository. Note that the two aforementioned scripts in
-the repository require the target device to be on the LAN and an SMB/Samba server with a share designed to capture the 
-results.
+Many suspicious indicators can be collected using scripts so that administrators or security personnel can find malware installed on managed devices or other potential indicators of compromise. In addition, Extension Attribute scripts run on target machines when inventory collection occurs, which can be set to several different frequencies. Based on the results returned by the Extension Attribute scripts, computers can be placed in Smart Groups.
 
-Certain settings in the JSS and practices may also ease malware hunting and potentially prevent some security issues.
-Some general recommendations are to:
+How Can Smart Groups Help?
 
-  0. Implement the CIS Benchmarks for macOS (hxxps://github[.]com/jamfprofessionalservices/CIS-for-macOS-Sierra) and 
-     maintain security settings using policies and smart groups in the JSS to manage desired state of security 
-     configurations. Doing so will not only aid hunting, the general security posture of your managed fleet will be much
-     stronger.
-  
-  1. Restrict the directories from which apps are allowed to run to /Applications, ~/Applications, and ~/Library in a 
-     configuration profile. There are no common reasons for applications to reside out side of /Applications, ~/Library, and
-     ~/Applications. Certain applications have components that run from subdirectories of ~/Library and with testing, 
-     even more strict launch directories can be specified to further control malware execution.
-     
-  2. Increase Computer Inventory Collection of .apps by adding custom search paths such as ~/Applications and ~/Library or 
-     even ~/ and/or use the findFileType.py script template looking only for .app files and make a separate smart group.
-     
-  3. After increasing the directories monitored for .app bundles, start constructing a smart group of known malware .app 
-     bundles that is updated periodically as new items are found and new .app indicators of compromise are released by the 
-     macOS security community. Using these brittle indicators provides high fidelity signal but will not catch everything.
-     Luckily, there is comparatively little macOS malware in the wild compared to Windows malware so the type of indicators 
-     that are considered brittle in Windows environments, may actually be more effective in macOS environments.
-     
-  4. Use the Restricted Software function of the JSS to block known malicious .app files from running in your environment and 
-     set up email notifications if the application attempted to run. Also make sure that you supply a message to the user 
-     when malicious .apps attempt to run so that the proper incident response procedures may be followed. The addition of new 
-     IOCs to the Restricted Software records and smart group criteria can be be scripted using the Jamf API 
-     (hxxps://developer.jamf[.]com/apis/jamf-pro-api/index)
-     
-  5. Isolate machines quickly after detecting an infection. One way to isolate a machine when malware is detected is to scope 
-     a configuration profile that sets the curfew in parental controls to allow login for only 1 minute and scope a script to
-     turn off active network interfaces.
-     
-  6. Use the appWhitelistCheck.sh script to check for unknown .apps in your environment. This will take a considerable amount
-     of tuning, however, once properly tuned, new malware that is in a .app bundle will be easy to find.
-     
-  7. The Parental Controls Configuration Profile payload has a feature to whitelist or blacklist URLs. If your managed fleet
-     is mostly mobile and users can work from home without using a VPN, this may be an option to limit exposure to known
-     bad domains or only allow access to domains that specific user roles need.
-     
-  8. Limit application sources: the JSS or Munki should be used to install all of the software users need so that
-     these systems can be controlled by the systems administrator and/or security. Set the Restrictions payload of a 
-     Configuration Profile to only allow apps from the Mac App Store. For added security, only allow the app store for 
-     updates and push out apps from the Mac App Store using VPP.
+First there must be a common result if an Indicator of Compromise (IOC) is NOT found. In the case of the work hosted here, if the suspicious indicator is not found, the Extension Attribute  (EA) will return a results of 'None' to the JSS. Setting an "all clear" result as ‘None’ across EA scripts allows for flexible grouping of criteria to generate smart groups. Smart groups could be constructed for each script individually or scripts can be grouped into smart groups for high/medium/low indicator ratings based on the perceived amount of risk. 
 
-  9. Most macOS malware in the wild still relies on installation via an application with a trojan horse. Use the principle of 
-     least privilege to determine which users or groups of users need administrator rights to their machines and carefully 
-     control this access. It is much more difficult for malware to gain root privileges if the user is unable to provide it 
-     to malware. Many malware specimens such as OSX.Pirrit (hxxps://objective-see[.]com/blog/blog_0x0E.html) rely on the 
-     user entering their administrator password into a prompt. Alternatively, users could be given an administrator account 
-     on their Mac but are required to use a standard user account for browsing and normal tasks.
-     
- 10. Enable the Application Layer Firewall (ALF) using a configuration profile. Note that the macOS ALF only blocks inbound 
-     connections and installed applications will automatically be allowed through. MacOS also has Packet Filter (PF) 
-     installed and custom rules can be written for PF to block lateral movement and perform many other useful blacklisting 
-     and whitelisting.
+For example, if the sudoers file has been edited with the line 'defaults !tty_tickets' or there are root crontabs that run binaries or scripts that were not placed there by an administrator, that machine has likely been compromised and is a risk that should be dealt with immediately, which could be categorized as High-risk. If there are just a few strange .exe files on a machine, it may be of less concern and could be placed in a medium or lower risk-level smart group because it is likely the result of someone trying to install software they should not.
+In either case, each device in the smart group can then be investigated further within the JSS or with other custom scripts such as Yelp's osxcollector (hxxps://github[.]com/Yelp/osxcollector), requestFileInfo.sh, and forensicsAndLogCollection.sh scripts in the repository. Note that the two aforementioned scripts in the repository require the target device to be on the LAN and an SMB/Samba server with a share designed to capture the results.
+
+# How Can I Prevent Security Incidents or Events in the First Place?
+
+Certain settings in the JSS and practices may also ease malware hunting and potentially prevent some security issues. Some general recommendations are to:
+1. Implement the baseline secure configuration described by the CIS Benchmark for macOS (Jamf Professional Services wrote a  very useful set of scripts to help IT admins accomplish this: hxxps://github[.]com/jamfprofessionalservices/CIS-for-macOS-Sierra) and maintain security settings using policies and smart groups in the JSS to manage desired state of security configurations. Doing so will not only aid hunting, the general security posture of the managed fleet will be much stronger. 
+2. Restrict the directories from which apps are allowed to run to /Applications, ~/Applications, and ~/Library in a configuration profile using the Restrictions payload. There is no reason that applications need to reside outside of /Applications, ~/Library, and ~/Applications. Certain applications have components that run from subdirectories of ~/Library (Google Chrome runs software updates from ~/Library/Google/GoogleSoftwareUpdate) and with testing, even more strict allowable launch directories can be specified to further control malware execution. 
+3. Increase Computer Inventory Collection of .apps by adding custom search paths such as ~/Applications and ~/Library or even ~/ and/or use the findFileType.py script template looking only for .app files and make a separate smart group. Many common adware programs or other shady software is distributed as .app bundles rather than more stealthy binary executables. 
+4. After increasing the directories monitored for .app bundles, start constructing a smart group of known malware .app bundles that is updated periodically as new items are found and new .app indicators of compromise are released by the macOS security community. Using these brittle indicators provides a high fidelity signal but will not catch everything, especially because malware and adware authors can simply change the name of the apps. Luckily, there is comparatively little macOS malware in the wild compared to Windows malware so the type of indicators that are considered brittle in Windows environments, may actually be more effective in macOS environments. More importantly, if a brittle indicator is found on a machine, that machine should be investigated further. 
+5. The Restricted Software function of the Jamf Pro Server is powerful because it can block the execution of known-malicious applications, binaries, and scripts. Use the Restricted Software function of the Jamf Pro Server to block known malicious .app files from running in your environment and set up email notifications if a malicious application attempts to run. Also make sure that you supply a message to the user when malicious .apps attempt to run so that the proper incident response procedures may be followed and the user can receive feedback about the validity of an app they may have just installed. The addition of new IOCs to the Restricted Software records and smart group criteria can be scripted using the Jamf API (hxxps://developer.jamf[.]com/apis/jamf-pro-api/index) 
+6. Isolate machines quickly after detecting an infection. One way to isolate a machine when malware is detected is to scope a configuration profile that sets the curfew in parental controls to allow login for only 1 minute and scope a script to turn off active network interfaces. 
+7. The Parental Controls Configuration Profile payload has a feature to whitelist or blacklist URLs. If your managed fleet is mostly mobile and users can work from home without using a VPN and firewall or proxy server filtering, this may be an option to limit exposure to known bad domains or only allow access to domains that specific user roles need. 
+8. Limit application sources: the Jamf Pro Server, Munki, or another macOS patch management system should be used to install all of the software users need so that these systems can be controlled by the systems administrator and/or security. Set the Restrictions payload of a Configuration Profile to only allow apps from the Mac App Store. For added security, only allow the app store for updates and push out apps from the Mac App Store using VPP. 
+9. Most macOS malware in the wild still predominantly relies on installation via an application with a trojan horse. Use the principle of least privilege to determine which users or groups of users need administrator rights to their machines and carefully control this access. It is much more difficult for malware to gain root privileges if the user is unable to provide these rights. Many malware specimens such as OSX.Pirrit (hxxps://objective-see[.]com/blog/blog_0x0E.html) rely on the user entering their administrator password into a prompt. 
+10. Enable the Application Layer Firewall (ALF) and Packet Filter (PF) firewall using a configuration profile. Note that the macOS ALF only blocks inbound connections and installed applications will automatically be allowed through. MacOS also has openBSD Packet Filter (PF) installed and custom rules can be written for PF to block lateral movement and perform many other useful blacklisting and whitelisting of IP addresses. 
