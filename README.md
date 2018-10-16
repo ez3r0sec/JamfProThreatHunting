@@ -6,7 +6,7 @@ The Jamf Pro Server and agent are incredibly useful tools for collecting informa
 
 Many suspicious indicators can be collected using scripts so that administrators or security personnel can find malware installed on managed devices or other potential indicators of compromise. In addition, Extension Attribute scripts run on target machines when inventory collection occurs, which can be set to several different frequencies. Based on the results returned by the Extension Attribute scripts, computers can be placed in Smart Groups.
 
-How Can Smart Groups Help?
+# How Can Smart Groups Help?
 
 First there must be a common result if an Indicator of Compromise (IOC) is NOT found. In the case of the work hosted here, if the suspicious indicator is not found, the Extension Attribute  (EA) will return a results of 'None' to the JSS. Setting an "all clear" result as ‘None’ across EA scripts allows for flexible grouping of criteria to generate smart groups. Smart groups could be constructed for each script individually or scripts can be grouped into smart groups for high/medium/low indicator ratings based on the perceived amount of risk. 
 
