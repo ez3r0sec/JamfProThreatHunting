@@ -4,7 +4,7 @@
 # check installed apps against app whitelists
 # method is not the most effective due to only using file paths and names,
 #+ however it could be useful for finding malware
-# Last Edited: 8/2/18 Julian Thies
+# Last Edited: 10/16/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
