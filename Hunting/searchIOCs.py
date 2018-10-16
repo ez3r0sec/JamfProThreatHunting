@@ -2,7 +2,7 @@
 # -----------------------------------------------------------------------------
 # searchIOCs.py
 # extension attribute script that can be crafted to search for various specific 
-#+IOCs in an ad hoc manner
+#+IOCs as needed
 # Last Edited: 10/16/18 Julian Thies
 # -----------------------------------------------------------------------------
 
