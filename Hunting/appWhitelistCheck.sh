@@ -26,6 +26,8 @@ declare -a Corp_App_Whitelist=(
 	"/Library/Application Support/JAMF/bin/Management Action.app"
 	"/Library/Application Support/JAMF/Jamf.app"
 	"/Library/Application Support/JAMF/Jamf.app/Contents/MacOS/JamfAAD.app"
+	"/Library/Application Support/JAMF/Jamf.app/Contents/MacOS/JamfAgent.app"
+	"/Library/Application Support/JAMF/Jamf.app/Contents/MacOS/JamfDaemon.app"
 )
 
 # declare an array of whitelisted apps that are built into macOS
@@ -112,6 +114,7 @@ declare -a Library_App_Whitelist=(
 
 # whitelist of apps housed in /System/Library and other UNIXy directories
 declare -a System_App_WhiteList=(
+	"/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/MobileDeviceUpdater.app"
 	"/usr/libexec/MiniTerm.app"
 	"/System/Library/ColorSync/Calibrators/Display Calibrator.app"
 	"/System/Library/CoreServices/AddPrinter.app"
