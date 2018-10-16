@@ -3,7 +3,7 @@
 # searchIOCs.py
 # extension attribute script that can be crafted to search for various specific 
 #+IOCs in an ad hoc manner
-# Last Edited: 7/27/18 Julian Thies
+# Last Edited: 10/16/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -172,28 +172,35 @@ def search_process(processname):
 
 ### SCRIPT
 # make the function calls you want here (some real-world examples included)
-###
-
+# -----------------------------------------------------------------------------
+### Find a file on disk
 #find_file()
 
+### Find a file that could be in any of several user home directories
 #find_file_user()		   
 # unclassified malware
 # https://www.virustotal.com/#/file/d46fca87d7f81fffbad70fce35b6009848ac0b1993404aa7a81259322fc93405/behavior
 find_file_user(userList, "/Library/X2441139MAC/Temp/internal.sh")
 
+### Collect information about a target directory
 #survey_dir()
 
+### Check the disk for a file with a specific hash
+# DO NOT USE OFTEN, TAKES A LOT OF RESOURCES
 # new OSX.Shlayer Hash - 454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0
 #+https://www.virustotal.com/en/file/454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0/analysis/1531927012/
-# DO NOT USE OFTEN, TAKES A LOT OF RESOURCES
 #find_hash("/", "454f5b2a8e38cc12a0ad532a93c5f7435b3a22bd2c13f6acf6c0c7bb91673ed0")
 
+### Check for network communication to a specific IP address
 network_connections("8.8.8.8")
 
+### Search the disk for files with a certain file extension
 #search_file_type()
 
+### Search for a specific process name
 #search_process()
 
+# -----------------------------------------------------------------------------
 ### DO NOT MODIFY
 # present results to the JSS
 read_result_file(resultsFile)
