@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # querySafariDownloadsPlist.py
 # look through safari browser download history to attempt to identify malware
-# Last Edited: 7/27/18
+### WILL NOT WORK ON macOS MOJAVE -> TCC protections
+# Last Edited: 11/14/18
 
 ### IMPORTS
 import os
