@@ -2,7 +2,8 @@
 # -----------------------------------------------------------------------------
 # executablesInMail.sh
 # check Mail.app directories for executables
-# Last Edited: 8/21/18 Julian Thies
+### WILL NOT WORK ON macOS MOJAVE -> TCC protections
+# Last Edited: 11/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### VARIABLES
