@@ -2,7 +2,8 @@
 # -----------------------------------------------------------------------------
 # detectSafariExtensions.py
 # look for safari extensions
-# Last Edited: 8/2/18 Julian Thies
+### WILL NOT WORK ON macOS MOJAVE -> TCC protections
+# Last Edited: 11/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
