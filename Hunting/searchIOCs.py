@@ -3,7 +3,7 @@
 # searchIOCs.py
 # extension attribute script that can be crafted to search for various specific 
 #+IOCs as needed
-# Last Edited: 10/16/18 Julian Thies
+# Last Edited: 12/15/18 Julian Thies
 # -----------------------------------------------------------------------------
 
 ### IMPORTS
@@ -127,7 +127,7 @@ def network_connections(ip):
     c = 0
     while c < 20:
         # call netstat at a random interval between 1 and 20 seconds and send to output file
-        subprocess.call(['netstat', '-peanutw'], stdout=netwFile)
+        subprocess.call(['netstat', '-avW'], stdout=netwFile)
         time.sleep(random.randint(1,5))
         c = c + 1
     # search for the IP using regex
