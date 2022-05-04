@@ -2,8 +2,13 @@
 # -----------------------------------------------------------------------------
 # findFileType.py
 # find files matching the specified types
-# Last Edited: 9/10/18 Julian Thies
+# Last Edited: 5/4/22 Julian Thies
 # -----------------------------------------------------------------------------
+
+### MODIFY as needed
+locationsToSearch = ["/tmp", "/Users"]
+searchList = [".sh", ".py", ".exe", ".msi", ".dll", ".jar", ".php", ".lua", ".js", ".jsp", ".deb", ".rpm", ".tar.gz", ".iso", ".7z", ".tar"]
+
 
 ### IMPORTS
 import os
@@ -47,6 +52,7 @@ def hash_file(filename):
 	hashResult = "{0}".format(sha256Hash.hexdigest())
 	return(hashResult)
 
+# main function
 def search_file_type(fileType, searchPath):
     # recursively search for files with .XXX extension
     # generate an outfile for each file extension called
@@ -54,7 +60,7 @@ def search_file_type(fileType, searchPath):
     # recursively look through directories with searchPath as the root of the search
     for root, dirs, files in os.walk(searchPath):
         for file in files:
-            # use the endswith function to find files with that ending
+            # use the endswith function to find files with that endingn (bruttle but file magic is hard)
             if file.endswith(fileType):
                 # records the full file path
                 filePath = os.path.join(root, file)
@@ -72,11 +78,10 @@ def clean_up(directory, fileType):
             os.remove(directory + "/" + directoryList[i])
 
 ### SCRIPT
-searchList = [".sh", ".py", ".exe", ".msi", ".dll", ".jar", ".php", ".lua", ".js", ".jsp", ".deb", ".rpm", ".tar.gz", ".iso", ".7z", ".tar"]
-
-for i in range(len(searchList)):
-	search_file_type(searchList[i], "/tmp")
-	search_file_type(searchList[i], "/Users")
+for j in range(len(locationsToSearch)):
+	for i in range(len(searchList)):
+		# for each directory specified above, look for the file types specified above
+		search_file_type(locationsToSearch[j], searchList[i])
 
 ''' read the results file '''
 read_result_file(resultFile)
